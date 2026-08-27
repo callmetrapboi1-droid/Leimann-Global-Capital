@@ -7,7 +7,6 @@ import PropertyFilterBar from "./PropertyFilterBar";
 import PropertyDetailModal from "./PropertyDetailModal";
 import { Building } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import Reveal from "@/components/ui/Reveal";
 
 interface PropertyPortfolioSectionProps {
   onOpenPortal: (tab?: "login" | "consultation" | "dossier", propertyName?: string) => void;
@@ -27,12 +26,11 @@ export default function PropertyPortfolioSection({
 }: PropertyPortfolioSectionProps) {
   const [filter, setFilter] = useState<"all" | "switzerland" | "uk" | "asia" | "buy" | "rent">("all");
   const [selectedProperty, setSelectedProperty] = useState<PropertyItem | null>(null);
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const isTH = language === "TH";
 
   const filteredProperties = propertiesData.filter((p) => {
     if (filter === "all") return true;
-    if (filter === "buy") return p.offerType === "BUY";
-    if (filter === "rent") return p.offerType === "RENT";
     return p.country === filter;
   });
 
@@ -51,49 +49,48 @@ export default function PropertyPortfolioSection({
   };
 
   return (
-    <section id="portfolio" className="py-24 max-w-container-max mx-auto px-6 sm:px-12 lg:px-margin-desktop bg-[#FAF8F5]">
+    <section id="portfolio" className="py-24 max-w-container-max mx-auto px-6 sm:px-12 lg:px-margin-desktop bg-surface">
       {/* Section Header */}
-      <Reveal direction="up" delay={100} className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
           <div className="flex items-center gap-2 mb-3 text-neutral-500">
-            <Building className="w-4 h-4 text-[#1A1C1C]" />
+            <Building className="w-4 h-4 text-primary" />
             <span className="font-label-sm text-xs uppercase tracking-[0.25em] text-neutral-600 font-semibold">
-              {t.portfolio.tag}
+              {isTH ? "การลงทุนสินทรัพย์คัดเลือก" : "Curated Trophy Acquisitions"}
             </span>
           </div>
-          <h2 className="font-headline-md text-3xl sm:text-4xl lg:text-5xl text-[#1A1C1C] font-normal">
-            {t.portfolio.headline}
+          <h2 className="font-headline-md text-3xl sm:text-4xl lg:text-5xl text-primary font-normal">
+            {isTH ? "คอลเลกชันสินทรัพย์ระดับ Super-Prime" : "Global Prime Real Estate Collection"}
           </h2>
           <p className="font-body-lg text-on-surface-variant max-w-3xl mt-4 text-sm sm:text-base font-light leading-relaxed">
-            {t.portfolio.subtitle}
+            {isTH
+              ? "การปกป้องมูลค่าเงินทุนผ่านสถาปัตยกรรมและอสังหาริมทรัพย์ระดับแลนด์มาร์กในเขตอำนาจศาลที่มั่นคงที่สุดในโลก"
+              : "Tangible capital preservation through premier architectural landmarks in the world's most stable jurisdictions."}
           </p>
         </div>
-      </Reveal>
+      </div>
 
       {/* Filter and Currency Bar */}
-      <Reveal direction="up" delay={200}>
-        <PropertyFilterBar
-          activeFilter={filter}
-          onFilterChange={setFilter}
-          currency={currency}
-          onCurrencyChange={setCurrency}
-          totalAssetsCount={filteredProperties.length}
-        />
-      </Reveal>
+      <PropertyFilterBar
+        activeFilter={filter}
+        onFilterChange={setFilter}
+        currency={currency}
+        onCurrencyChange={setCurrency}
+        totalAssetsCount={filteredProperties.length}
+      />
 
-      {/* Properties Grid with Staggered Cascade */}
+      {/* Properties Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProperties.map((prop, index) => (
-          <Reveal key={prop.id} direction="up" delay={100 + (index % 3) * 150}>
-            <PropertyCard
-              property={prop}
-              formattedPrice={formatPrice(prop.priceCHF)}
-              onSelectProperty={setSelectedProperty}
-              onRequestDossier={(title) => onOpenPortal("dossier", title)}
-              isCompared={compareList.includes(prop.id)}
-              onToggleCompare={onToggleCompare}
-            />
-          </Reveal>
+        {filteredProperties.map((prop) => (
+          <PropertyCard
+            key={prop.id}
+            property={prop}
+            formattedPrice={formatPrice(prop.priceCHF)}
+            onSelectProperty={setSelectedProperty}
+            onRequestDossier={(title) => onOpenPortal("dossier", title)}
+            isCompared={compareList.includes(prop.id)}
+            onToggleCompare={onToggleCompare}
+          />
         ))}
       </div>
 

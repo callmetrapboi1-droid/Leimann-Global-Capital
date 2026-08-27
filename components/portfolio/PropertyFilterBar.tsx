@@ -19,14 +19,14 @@ export default function PropertyFilterBar({
   onCurrencyChange,
   totalAssetsCount,
 }: PropertyFilterBarProps) {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const isTH = language === "TH";
 
   const filterTabs = [
-    { id: "all", label: t.portfolio.filterAll },
-    { id: "buy", label: t.portfolio.filterBuy },
-    { id: "rent", label: t.portfolio.filterRent },
-    { id: "switzerland", label: t.portfolio.filterSwiss },
-    { id: "uk", label: t.portfolio.filterUk },
+    { id: "all", label: isTH ? "สินทรัพย์ทั้งหมด" : "All Trophy Assets" },
+    { id: "switzerland", label: isTH ? "สวิตเซอร์แลนด์" : "Switzerland (Zurich & Geneva)" },
+    { id: "uk", label: isTH ? "สหราชอาณาจักร" : "United Kingdom (London)" },
+    { id: "asia", label: isTH ? "เอเชีย" : "Asia Hubs (Singapore & Bangkok)" },
   ] as const;
 
   return (
@@ -40,8 +40,8 @@ export default function PropertyFilterBar({
               onClick={() => onFilterChange(tab.id as any)}
               className={`px-5 py-2.5 font-label-sm text-xs tracking-wider uppercase transition-all border ${
                 activeFilter === tab.id
-                  ? "bg-burgundy text-white border-burgundy shadow-xs font-semibold"
-                  : "bg-white text-on-surface-variant border-outline-variant/60 hover:bg-sand-100 hover:text-charcoal"
+                  ? "bg-primary text-white border-primary shadow-xs font-semibold"
+                  : "bg-white text-on-surface-variant border-outline-variant/60 hover:bg-neutral-100 hover:text-primary"
               }`}
             >
               {tab.label}
@@ -62,8 +62,8 @@ export default function PropertyFilterBar({
                 onClick={() => onCurrencyChange(c)}
                 className={`px-3 py-1 font-label-sm text-xs transition-all ${
                   currency === c
-                    ? "bg-charcoal text-white font-medium shadow-xs"
-                    : "text-neutral-600 hover:text-charcoal"
+                    ? "bg-primary text-white font-medium shadow-xs"
+                    : "text-neutral-600 hover:text-primary"
                 }`}
               >
                 {c}
@@ -74,9 +74,9 @@ export default function PropertyFilterBar({
       </div>
 
       <div className="flex justify-between items-center text-xs text-neutral-500 border-b border-outline-variant/40 pb-3">
-        <span>{t.portfolio.displaying} ({totalAssetsCount})</span>
-        <span className="font-label-sm text-[10px] uppercase tracking-wider text-bronze-gold font-medium">
-          {t.portfolio.portfolioSub}
+        <span>{isTH ? `แสดง ${totalAssetsCount} สินทรัพย์ที่ได้รับการคัดเลือก` : `Displaying ${totalAssetsCount} selected trophy acquisitions`}</span>
+        <span className="font-label-sm text-[10px] uppercase tracking-wider text-primary font-medium">
+          {isTH ? "การบริหารจัดการสินทรัพย์ส่วนบุคคล" : "Off-Market Private Portfolio Management"}
         </span>
       </div>
     </div>

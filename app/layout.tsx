@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, EB_Garamond } from "next/font/google";
 import "./globals.css";
+import ScrollRevealInit from "@/components/common/ScrollRevealInit";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,16 +17,16 @@ const ebGaramond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Leimann Global Capital GmbH | Architects of Capital Preservation & Prime Real Estate",
+  title: "Leimann Global Capital | Swiss Family Investment Platform",
   description:
-    "Swiss private wealth management, luxury global real estate acquisitions, and multi-generational capital preservation since 1984.",
+    "Leimann Global Capital is a privately held investment and business platform based in Switzerland. A subholding of ActivaSwiss AG Family Office pursuing strategic investments, fintech, and cross-border initiatives.",
   keywords: [
-    "Luxury Real Estate",
-    "Capital Preservation",
-    "Swiss Wealth Management",
-    "Private Family Office",
-    "Prime Property Acquisitions",
-    "Zurich Real Estate",
+    "Swiss Family Investment Platform",
+    "ActivaSwiss AG Subholding",
+    "Global Fintech",
+    "Strategic Investments",
+    "Swiss Private Capital",
+    "Freienbach SZ",
   ],
   icons: {
     icon: "/favicon.ico",
@@ -46,6 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body-md selection:bg-primary-fixed selection:text-primary bg-background text-on-surface antialiased">
+        <ScrollRevealInit />
         {children}
       </body>
     </html>

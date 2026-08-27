@@ -2,102 +2,95 @@
 
 import { useState } from "react";
 import { LanguageProvider } from "@/context/LanguageContext";
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+// The 6 Sections required for HOME in exact flow:
+// Hero → About → Investment → Global Perspective → Heritage → Family Office
 import HeroSection from "@/components/home/HeroSection";
-import MetricsBarSection from "@/components/home/MetricsBarSection";
-import VisionSplitSection from "@/components/home/VisionSplitSection";
-import ServicesTabSection from "@/components/home/ServicesTabSection";
-import PropertyPortfolioSection from "@/components/portfolio/PropertyPortfolioSection";
-import CapitalTimelineSection from "@/components/home/CapitalTimelineSection";
-import HeritageSection from "@/components/HeritageSection";
-import BoardroomSection from "@/components/BoardroomSection";
-import ContactSection from "@/components/home/ContactSection";
+import HomeAboutSection from "@/components/home/HomeAboutSection";
+import HomeInvestmentsSection from "@/components/home/HomeInvestmentsSection";
+import HomeGlobalPerspectiveSection from "@/components/home/HomeGlobalPerspectiveSection";
+import HomeHeritageSection from "@/components/home/HomeHeritageSection";
+import HomeFamilyEnterpriseSection from "@/components/home/HomeFamilyEnterpriseSection";
+
 import InvestorPortalModal from "@/components/InvestorPortalModal";
+import LegalModal from "@/components/modals/LegalModal";
 
-export default function Home() {
+function HomePageContent() {
   const [portalOpen, setPortalOpen] = useState(false);
-  const [portalTab, setPortalTab] = useState<"login" | "consultation" | "dossier">("consultation");
-  const [selectedProperty, setSelectedProperty] = useState<string | null>(null);
+  const [portalTab, setPortalTab] = useState<"login" | "consultation" | "dossier">("login");
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
 
-  // Currency & Property State
-  const [currency, setCurrency] = useState<"CHF" | "USD" | "EUR" | "THB">("CHF");
-  const [compareList, setCompareList] = useState<string[]>(["funny-haus-binz", "kuesnacht-goldcoast"]);
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [legalType, setLegalType] = useState<"legal" | "privacy">("legal");
 
   const handleOpenPortal = (
-    tab: "login" | "consultation" | "dossier" = "consultation",
-    propertyName?: string
+    tab: "login" | "consultation" | "dossier" = "login",
+    topic?: string
   ) => {
     setPortalTab(tab);
-    setSelectedProperty(propertyName || null);
+    setSelectedTopic(topic || null);
     setPortalOpen(true);
   };
 
-  const handleClosePortal = () => {
-    setPortalOpen(false);
-    setSelectedProperty(null);
-  };
-
-  const handleToggleCompare = (id: string) => {
-    setCompareList((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
+  const handleOpenLegal = (type: "legal" | "privacy") => {
+    setLegalType(type);
+    setLegalModalOpen(true);
   };
 
   return (
+    <div className="min-h-screen flex flex-col bg-surface text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+      {/* Top Navbar */}
+      <Navbar onOpenPortal={handleOpenPortal} />
+
+      {/* Main Content: Flow: Hero → About → Investment → Global Perspective → Heritage → Family Office */}
+      <main className="w-full bg-surface">
+        {/* ① Hero */}
+        <HeroSection onOpenPortal={handleOpenPortal} />
+
+        {/* ② About Us */}
+        <HomeAboutSection />
+
+        {/* ③ Investments & Collaborations */}
+        <HomeInvestmentsSection />
+
+        {/* ④ Global Perspective */}
+        <HomeGlobalPerspectiveSection />
+
+        {/* ⑤ Heritage */}
+        <HomeHeritageSection />
+
+        {/* ⑥ Family Enterprise / Family Office */}
+        <HomeFamilyEnterpriseSection />
+      </main>
+
+      {/* Footer */}
+      <Footer onOpenLegal={handleOpenLegal} />
+
+      {/* Investor Portal Modal */}
+      <InvestorPortalModal
+        isOpen={portalOpen}
+        onClose={() => setPortalOpen(false)}
+        initialTab={portalTab}
+        selectedProperty={selectedTopic}
+      />
+
+      {/* Legal Notice & Privacy Policy Modal */}
+      <LegalModal
+        isOpen={legalModalOpen}
+        type={legalType}
+        onClose={() => setLegalModalOpen(false)}
+      />
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
     <LanguageProvider>
-      <div className="min-h-screen flex flex-col bg-background text-on-surface relative">
-        {/* Top Fixed Header with Logo, Full-Screen Menu & Language Dropdown */}
-        <Navbar />
-
-        {/* Main Content Flow */}
-        <main className="flex-1 w-full">
-          {/* 1. Clean Hero Section: Full background imagery without in-banner clutter */}
-          <HeroSection onOpenPortal={handleOpenPortal} />
-
-          {/* 2. Standalone Swiss Fiduciary Metrics Bar (Visible upon scrolling) */}
-          <MetricsBarSection />
-
-          {/* 3. Our Vision: 50/50 Split & Signature Quote Section */}
-          <VisionSplitSection onOpenPortal={handleOpenPortal} />
-
-          {/* 4. Core Services & Disciplines Tab System (Acquire / Build / Sell & Rent / Capital Investment) */}
-          <ServicesTabSection onOpenPortal={handleOpenPortal} />
-
-          {/* 5. Real Estate Portfolio Showcase (Buy & Rent Filter + Dossier Access) */}
-          <PropertyPortfolioSection
-            onOpenPortal={handleOpenPortal}
-            currency={currency}
-            setCurrency={setCurrency}
-            compareList={compareList}
-            onToggleCompare={handleToggleCompare}
-          />
-
-          {/* 6. Capital Investment & Strategic Growth Timeline (2024 - 2026) */}
-          <CapitalTimelineSection onOpenPortal={handleOpenPortal} />
-
-          {/* 7. About Us, Board of Directors & Swiss Heritage Governance */}
-          <HeritageSection />
-
-          {/* 8. Boardroom & Founder Quote */}
-          <BoardroomSection />
-
-          {/* 9. Direct Swiss Contact Desk in Küsnacht */}
-          <ContactSection onOpenPortal={handleOpenPortal} />
-        </main>
-
-        {/* 10. Warm Taupe Swiss Footer & Imprint */}
-        <Footer onOpenPortal={handleOpenPortal} />
-
-        {/* Secure Investor Advisory Modal */}
-        <InvestorPortalModal
-          isOpen={portalOpen}
-          onClose={handleClosePortal}
-          initialTab={portalTab}
-          selectedProperty={selectedProperty}
-        />
-      </div>
+      <HomePageContent />
     </LanguageProvider>
   );
 }

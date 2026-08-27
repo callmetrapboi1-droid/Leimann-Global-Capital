@@ -44,7 +44,7 @@ export default function PropertyCard({
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
 
-        {/* Offer Type Badge (BUY / RENT like ActivaSwiss) */}
+        {/* Status Badge */}
         <div
           className={`absolute top-3 left-3 px-3 py-1 text-[11px] font-label-sm uppercase tracking-widest font-bold ${
             isRent

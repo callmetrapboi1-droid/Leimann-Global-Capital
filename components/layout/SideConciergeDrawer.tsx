@@ -1,51 +1,40 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   X,
   Clock,
   ShieldCheck,
-  Building2,
-  TrendingUp,
-  PhoneCall,
-  Send,
+  Mail,
   Lock,
-  ArrowRight,
   Globe,
-  SlidersHorizontal,
 } from "lucide-react";
-import { PropertyItem, propertiesData } from "@/data/properties";
 import { marketTickers } from "@/data/markets";
 
 interface SideConciergeDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenPortal: (tab?: "login" | "consultation" | "dossier", propertyName?: string) => void;
-  currency: "CHF" | "USD" | "EUR" | "THB";
-  setCurrency: (c: "CHF" | "USD" | "EUR" | "THB") => void;
-  compareList: string[];
-  onRemoveFromCompare: (id: string) => void;
+  onOpenPortal: (tab?: "login" | "consultation" | "dossier", topic?: string) => void;
 }
 
 export default function SideConciergeDrawer({
   isOpen,
   onClose,
   onOpenPortal,
-  currency,
-  setCurrency,
-  compareList,
-  onRemoveFromCompare,
 }: SideConciergeDrawerProps) {
-  const [zurichTime, setZurichTime] = useState("");
+  const { language, setLanguage, t } = useLanguage();
+  const [swissTime, setSwissTime] = useState("");
   const [singaporeTime, setSingaporeTime] = useState("");
   const [londonTime, setLondonTime] = useState("");
   const [bangkokTime, setBangkokTime] = useState("");
-  const [activeTab, setActiveTab] = useState<"concierge" | "markets" | "compare">("concierge");
+  const [activeTab, setActiveTab] = useState<"concierge" | "markets">("concierge");
 
   useEffect(() => {
     const updateTimes = () => {
       const now = new Date();
-      setZurichTime(
+      setSwissTime(
         now.toLocaleTimeString("en-GB", { timeZone: "Europe/Zurich", hour: "2-digit", minute: "2-digit", second: "2-digit" })
       );
       setSingaporeTime(
@@ -63,33 +52,34 @@ export default function SideConciergeDrawer({
     return () => clearInterval(interval);
   }, []);
 
-  const comparedProperties = propertiesData.filter((p) => compareList.includes(p.id));
-
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[95] flex justify-end bg-black/60 backdrop-blur-sm transition-all duration-300">
+    <div className="fixed inset-0 z-[105] flex justify-end bg-noir-950/80 backdrop-blur-sm transition-all duration-300">
       {/* Backdrop click */}
       <div className="flex-1" onClick={onClose}></div>
 
       {/* Drawer Container */}
-      <aside className="w-full max-w-md md:max-w-lg bg-white h-full shadow-2xl flex flex-col border-l border-outline-variant/40 animate-fadeIn relative z-10">
+      <aside className="w-full max-w-md md:max-w-lg bg-noir-900 text-on-surface h-full shadow-2xl flex flex-col border-l border-outline-gold animate-fadeIn relative z-10">
         {/* Top Header */}
-        <div className="p-6 bg-primary text-white flex items-center justify-between border-b border-neutral-800">
+        <div className="p-6 bg-noir-950 text-on-surface flex items-center justify-between border-b border-outline-gold">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="font-label-sm text-[10px] uppercase tracking-widest text-neutral-300">
-                Swiss Desk Live Concierge
+              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+              <span className="font-label-sm text-[10px] uppercase tracking-widest text-gold-300">
+                {t.concierge.title}
               </span>
             </div>
-            <h3 className="font-headline-sm text-xl text-white font-normal">
-              Private Client Side Panel
+            <h3 className="font-headline-sm text-xl text-on-surface font-normal">
+              Leimann Global Capital
             </h3>
+            <p className="text-[10px] text-gold-400 uppercase tracking-widest">
+              Subholding of ActivaSwiss AG
+            </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-neutral-400 hover:text-white transition-colors"
+            className="p-2 text-on-surface-variant hover:text-gold-400 transition-colors"
             aria-label="Close sidebar"
           >
             <X className="w-6 h-6" />
@@ -97,41 +87,26 @@ export default function SideConciergeDrawer({
         </div>
 
         {/* Sub Navigation Tabs */}
-        <div className="flex border-b border-neutral-200 bg-surface-container-low text-xs font-label-sm uppercase">
+        <div className="flex border-b border-outline-gold bg-noir-950 text-xs font-label-sm uppercase">
           <button
             onClick={() => setActiveTab("concierge")}
             className={`flex-1 py-3 px-2 text-center transition-all ${
               activeTab === "concierge"
-                ? "bg-white text-primary font-bold border-b-2 border-primary"
-                : "text-neutral-500 hover:text-primary"
+                ? "bg-noir-900 text-gold-400 font-semibold border-b-2 border-gold-400"
+                : "text-on-surface-variant hover:text-on-surface"
             }`}
           >
-            Desk & Clocks
+            {t.concierge.clocksTitle}
           </button>
           <button
             onClick={() => setActiveTab("markets")}
             className={`flex-1 py-3 px-2 text-center transition-all ${
               activeTab === "markets"
-                ? "bg-white text-primary font-bold border-b-2 border-primary"
-                : "text-neutral-500 hover:text-primary"
+                ? "bg-noir-900 text-gold-400 font-semibold border-b-2 border-gold-400"
+                : "text-on-surface-variant hover:text-on-surface"
             }`}
           >
-            Market Tickers
-          </button>
-          <button
-            onClick={() => setActiveTab("compare")}
-            className={`flex-1 py-3 px-2 text-center transition-all relative ${
-              activeTab === "compare"
-                ? "bg-white text-primary font-bold border-b-2 border-primary"
-                : "text-neutral-500 hover:text-primary"
-            }`}
-          >
-            <span>Compare</span>
-            {compareList.length > 0 && (
-              <span className="ml-1.5 bg-primary text-white text-[9px] px-1.5 py-0.2 rounded-full">
-                {compareList.length}
-              </span>
-            )}
+            {t.concierge.marketsTitle}
           </button>
         </div>
 
@@ -141,132 +116,145 @@ export default function SideConciergeDrawer({
             <>
               {/* World Clocks */}
               <div>
-                <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-neutral-500 mb-3 flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-primary" />
-                  <span>Global Financial Desks (Live)</span>
+                <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-gold-400 mb-3 flex items-center gap-1.5 font-semibold">
+                  <Clock className="w-3.5 h-3.5 text-gold-400" />
+                  <span>{t.concierge.clocksTitle}</span>
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 bg-surface-container-low border border-outline-variant/30 rounded-xs">
-                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-neutral-500">
-                      <span>Zurich (HQ)</span>
-                      <span className="text-emerald-700 font-bold">Trading</span>
+                  <div className="p-3 bg-noir-950 border border-outline-gold rounded-xs">
+                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-on-surface-variant">
+                      <span>Freienbach SZ / Zurich</span>
+                      <span className="text-emerald-400 font-semibold">Active</span>
                     </div>
-                    <p className="font-headline-sm text-xl text-primary font-medium mt-1">
-                      {zurichTime || "--:--:--"}
+                    <p className="font-headline-sm text-xl text-on-surface font-medium mt-1">
+                      {swissTime || "--:--:--"}
                     </p>
                   </div>
 
-                  <div className="p-3 bg-surface-container-low border border-outline-variant/30 rounded-xs">
-                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-neutral-500">
+                  <div className="p-3 bg-noir-950 border border-outline-gold rounded-xs">
+                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-on-surface-variant">
                       <span>London Desk</span>
-                      <span className="text-emerald-700 font-bold">Open</span>
+                      <span className="text-emerald-400 font-semibold">Open</span>
                     </div>
-                    <p className="font-headline-sm text-xl text-primary font-medium mt-1">
+                    <p className="font-headline-sm text-xl text-on-surface font-medium mt-1">
                       {londonTime || "--:--:--"}
                     </p>
                   </div>
 
-                  <div className="p-3 bg-surface-container-low border border-outline-variant/30 rounded-xs">
-                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-neutral-500">
+                  <div className="p-3 bg-noir-950 border border-outline-gold rounded-xs">
+                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-on-surface-variant">
                       <span>Singapore Hub</span>
-                      <span className="text-neutral-500">After Hours</span>
+                      <span className="text-on-surface-variant">After Hours</span>
                     </div>
-                    <p className="font-headline-sm text-xl text-primary font-medium mt-1">
+                    <p className="font-headline-sm text-xl text-on-surface font-medium mt-1">
                       {singaporeTime || "--:--:--"}
                     </p>
                   </div>
 
-                  <div className="p-3 bg-surface-container-low border border-outline-variant/30 rounded-xs">
-                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-neutral-500">
+                  <div className="p-3 bg-noir-950 border border-outline-gold rounded-xs">
+                    <div className="flex justify-between items-center text-[10px] uppercase font-label-sm text-on-surface-variant">
                       <span>Bangkok Desk</span>
-                      <span className="text-neutral-500">After Hours</span>
+                      <span className="text-on-surface-variant">After Hours</span>
                     </div>
-                    <p className="font-headline-sm text-xl text-primary font-medium mt-1">
+                    <p className="font-headline-sm text-xl text-on-surface font-medium mt-1">
                       {bangkokTime || "--:--:--"}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Base Currency Selection */}
+              {/* Language Selection */}
               <div>
-                <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-neutral-500 mb-3 flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-primary" />
-                  <span>Display Currency Baseline</span>
+                <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-gold-400 mb-3 flex items-center gap-1.5 font-semibold">
+                  <Globe className="w-3.5 h-3.5 text-gold-400" />
+                  <span>Platform Language / ภาษาของเว็บไซต์</span>
                 </h4>
-                <div className="grid grid-cols-4 gap-2">
-                  {(["CHF", "USD", "EUR", "THB"] as const).map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => setCurrency(c)}
-                      className={`py-2 text-xs font-label-sm uppercase tracking-wider border transition-all ${
-                        currency === c
-                          ? "bg-primary text-white border-primary font-semibold"
-                          : "bg-surface-container-low text-neutral-700 border-outline-variant/40 hover:border-primary"
-                      }`}
-                    >
-                      {c}
-                    </button>
-                  ))}
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setLanguage("EN")}
+                    className={`py-2.5 text-xs font-label-sm uppercase tracking-wider border transition-all ${
+                      language === "EN"
+                        ? "bg-primary text-on-primary border-gold-400 font-semibold"
+                        : "bg-noir-950 text-on-surface-variant border-outline-gold hover:border-gold-400"
+                    }`}
+                  >
+                    English (EN)
+                  </button>
+                  <button
+                    onClick={() => setLanguage("TH")}
+                    className={`py-2.5 text-xs font-label-sm uppercase tracking-wider border transition-all ${
+                      language === "TH"
+                        ? "bg-primary text-on-primary border-gold-400 font-semibold"
+                        : "bg-noir-950 text-on-surface-variant border-outline-gold hover:border-gold-400"
+                    }`}
+                  >
+                    ภาษาไทย (TH)
+                  </button>
                 </div>
               </div>
 
-              {/* Direct Confidential Dispatch */}
-              <div className="p-5 bg-neutral-900 text-white space-y-3">
-                <div className="flex items-center gap-2 text-platinum">
-                  <ShieldCheck className="w-5 h-5 text-platinum" />
-                  <span className="font-label-sm text-xs uppercase tracking-widest">
-                    Direct Partner Line
+              {/* Direct Confidential Line */}
+              <div className="p-5 bg-noir-950 border border-outline-gold text-on-surface space-y-3">
+                <div className="flex items-center gap-2 text-gold-300">
+                  <ShieldCheck className="w-5 h-5 text-gold-400" />
+                  <span className="font-label-sm text-xs uppercase tracking-widest font-semibold">
+                    {t.concierge.directLine}
                   </span>
                 </div>
-                <p className="text-xs text-neutral-300 leading-relaxed font-body-md">
-                  Connect securely with our Zurich Senior Partner for off-market acquisitions and sovereign portfolio structuring.
+                <p className="text-xs text-on-surface-variant leading-relaxed font-body-md font-light">
+                  {t.concierge.partnerDesc}
                 </p>
                 <div className="pt-2 space-y-2">
-                  <button
-                    onClick={() => {
-                      onClose();
-                      onOpenPortal("consultation");
-                    }}
-                    className="w-full bg-white text-primary py-2.5 font-label-sm text-xs uppercase tracking-widest hover:bg-neutral-100 transition-all font-semibold flex items-center justify-center gap-2"
+                  <a
+                    href="mailto:leimannglobalcapital@info.ch"
+                    className="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 font-label-sm text-xs uppercase tracking-widest transition-all font-semibold flex items-center justify-center gap-2"
                   >
-                    <PhoneCall className="w-3.5 h-3.5" />
-                    <span>Initiate Private Call</span>
-                  </button>
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>leimannglobalcapital@info.ch</span>
+                  </a>
                   <button
                     onClick={() => {
                       onClose();
                       onOpenPortal("login");
                     }}
-                    className="w-full border border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 py-2.5 font-label-sm text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                    className="w-full border border-outline-gold text-gold-300 hover:text-white hover:border-gold-400 py-2.5 font-label-sm text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
                   >
                     <Lock className="w-3.5 h-3.5" />
-                    <span>Access Principal Vault</span>
+                    <span>{t.concierge.vaultBtn}</span>
                   </button>
                 </div>
+              </div>
+
+              {/* Office Address Info */}
+              <div className="p-4 bg-noir-950 border border-outline-gold text-xs text-on-surface-variant space-y-1 font-light">
+                <span className="font-label-sm text-[10px] uppercase tracking-wider text-gold-400 block font-semibold">
+                  Leimann Global Capital GmbH
+                </span>
+                <p>Unterdorfstrasse 12, 8808 Freienbach SZ Switzerland</p>
+                <p className="text-[11px] text-on-surface-variant">Subholding of ActivaSwiss AG Family Office</p>
               </div>
             </>
           )}
 
           {activeTab === "markets" && (
             <div className="space-y-3">
-              <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-neutral-500 mb-2">
-                Live Liquidity & Real Estate Yield Benchmarks
+              <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-gold-400 mb-2 font-semibold">
+                Live Liquidity & Global Yield Indicators
               </h4>
               {marketTickers.map((ticker, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center p-3 bg-surface-container-low border border-outline-variant/30 rounded-xs text-xs"
+                  className="flex justify-between items-center p-3 bg-noir-950 border border-outline-gold rounded-xs text-xs"
                 >
                   <div>
-                    <span className="font-bold text-primary block">{ticker.symbol}</span>
-                    <span className="text-[11px] text-neutral-500">{ticker.name}</span>
+                    <span className="font-semibold text-on-surface block">{ticker.symbol}</span>
+                    <span className="text-[11px] text-on-surface-variant">{ticker.name}</span>
                   </div>
                   <div className="text-right">
-                    <span className="font-medium text-primary block">{ticker.value}</span>
+                    <span className="font-medium text-gold-300 block">{ticker.value}</span>
                     <span
                       className={`text-[11px] font-semibold ${
-                        ticker.isPositive ? "text-emerald-700" : "text-rose-600"
+                        ticker.isPositive ? "text-emerald-400" : "text-rose-400"
                       }`}
                     >
                       {ticker.change}
@@ -274,69 +262,6 @@ export default function SideConciergeDrawer({
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-
-          {activeTab === "compare" && (
-            <div className="space-y-4">
-              <h4 className="font-label-sm text-[11px] uppercase tracking-widest text-neutral-500 mb-2">
-                Selected Assets for Comparison ({compareList.length})
-              </h4>
-              {comparedProperties.length === 0 ? (
-                <div className="py-12 text-center text-neutral-400 text-xs">
-                  <Building2 className="w-8 h-8 mx-auto mb-2 opacity-40" />
-                  <p>No properties added to comparison yet.</p>
-                  <p className="text-[10px] text-neutral-400 mt-1">
-                    Click &ldquo;Compare&rdquo; on any property card to benchmark yields and metrics.
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  {comparedProperties.map((prop) => (
-                    <div
-                      key={prop.id}
-                      className="p-3 border border-outline-variant/40 bg-white flex items-center justify-between gap-3 shadow-xs"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={prop.image}
-                          alt={prop.title}
-                          className="w-14 h-14 object-cover shrink-0"
-                        />
-                        <div>
-                          <h5 className="font-headline-sm text-sm text-primary line-clamp-1">
-                            {prop.title}
-                          </h5>
-                          <span className="text-[11px] text-neutral-500 block">
-                            {prop.city} • {prop.yieldRate}
-                          </span>
-                          <span className="text-xs font-semibold text-primary">
-                            CHF {prop.priceCHF.toLocaleString()}
-                          </span>
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => onRemoveFromCompare(prop.id)}
-                        className="text-neutral-400 hover:text-rose-600 p-1 text-xs"
-                        title="Remove"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-
-                  <button
-                    onClick={() => {
-                      onClose();
-                      onOpenPortal("dossier", comparedProperties.map((p) => p.title).join(" vs "));
-                    }}
-                    className="w-full bg-primary text-white py-3 font-label-sm text-xs uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center gap-2 mt-4"
-                  >
-                    <span>Request Comparative Dossier</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
             </div>
           )}
         </div>

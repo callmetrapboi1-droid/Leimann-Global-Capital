@@ -9,7 +9,7 @@ interface InvestmentCalculatorProps {
 }
 
 export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalculatorProps) {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
   const [initialCapital, setInitialCapital] = useState<number>(10000000); // 10M CHF
   const [realEstateShare, setRealEstateShare] = useState<number>(60); // 60% Real Estate, 40% Liquid/Fixed
   const [years, setYears] = useState<number>(15);
@@ -34,20 +34,24 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
   const totalProjectedWealth = projectedRealEstateValue + projectedLiquidValue + cumulativeRentalIncome;
   const netGain = totalProjectedWealth - initialCapital;
 
+  const isTH = language === "TH";
+
   return (
     <section id="calculator" className="py-24 max-w-container-max mx-auto px-6 sm:px-12 lg:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <div className="inline-flex items-center gap-2 mb-3">
           <Calculator className="w-4 h-4 text-primary" />
           <span className="font-label-sm text-xs text-on-surface-variant uppercase tracking-[0.25em]">
-            {t.calculator.tag}
+            {isTH ? "เครื่องมือจำลองการเติบโตของทุน" : "Capital Preservation Simulator"}
           </span>
         </div>
         <h2 className="font-headline-md text-3xl sm:text-4xl lg:text-5xl text-primary font-normal">
-          {t.calculator.headline}
+          {isTH ? "การประมาณการพอร์ตลงทุนระยะยาว" : "Multi-Generational Wealth Projection"}
         </h2>
         <p className="font-body-md text-on-surface-variant mt-4 text-sm sm:text-base font-light">
-          {t.calculator.subtitle}
+          {isTH
+            ? "จำลองการเติบโตของเงินทุนภายใต้ยุทธศาสตร์ Family Office สวิตเซอร์แลนด์"
+            : "Simulate portfolio trajectory under Swiss wealth preservation structures across 5 to 30 year horizons."}
         </p>
       </div>
 
@@ -57,7 +61,7 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
           <div>
             <div className="flex justify-between items-center mb-2">
               <label className="text-xs uppercase font-label-sm tracking-wider text-neutral-600">
-                {t.calculator.inputCapital} (CHF)
+                {isTH ? "เงินทุนเริ่มต้น" : "Initial Capital"} (CHF)
               </label>
               <span className="font-headline-sm text-xl text-primary font-medium">
                 CHF {initialCapital.toLocaleString()}
@@ -82,10 +86,10 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
           <div>
             <div className="flex justify-between items-center mb-2">
               <label className="text-xs uppercase font-label-sm tracking-wider text-neutral-600">
-                Allocation (%)
+                {isTH ? "สัดส่วนสินทรัพย์เชิงกลยุทธ์ (%)" : "Strategic Asset Share (%)"}
               </label>
               <span className="font-headline-sm text-xl text-primary font-medium">
-                {realEstateShare}% Real Estate / {100 - realEstateShare}% Liquid
+                {realEstateShare}% Strategic / {100 - realEstateShare}% Liquid
               </span>
             </div>
             <input
@@ -97,17 +101,12 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
               onChange={(e) => setRealEstateShare(Number(e.target.value))}
               className="w-full h-1.5 bg-neutral-200 accent-primary cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-neutral-400 mt-1">
-              <span>10% (Liquid Focus)</span>
-              <span>50% (Balanced)</span>
-              <span>90% (Real Asset Focus)</span>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 pt-2">
             <div>
               <label className="block text-xs uppercase font-label-sm tracking-wider text-neutral-600 mb-2">
-                {t.calculator.inputYears}
+                {isTH ? "ระยะเวลาลงทุน" : "Investment Horizon"}
               </label>
               <select
                 value={years}
@@ -124,7 +123,7 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
 
             <div>
               <label className="block text-xs uppercase font-label-sm tracking-wider text-neutral-600 mb-2">
-                {t.calculator.inputYield}
+                {isTH ? "ผลตอบแทนเป้าหมาย" : "Target Yield (p.a.)"}
               </label>
               <select
                 value={rentalYieldRate}
@@ -132,28 +131,28 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
                 className="w-full bg-surface border border-outline-variant p-3 text-sm text-primary focus:outline-none"
               >
                 <option value={3.5}>3.5% (Trophy / Safe Haven)</option>
-                <option value={4.2}>4.2% (Prime Mixed Portfolio)</option>
-                <option value={5.5}>5.5% (High Cashflow Assets)</option>
+                <option value={4.2}>4.2% (Balanced Portfolio)</option>
+                <option value={5.5}>5.5% (Strategic Growth)</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Results Card */}
-        <div className="lg:col-span-6 bg-charcoal text-white p-8 sm:p-12 shadow-2xl border border-neutral-800 flex flex-col justify-between min-h-[480px]">
+        <div className="lg:col-span-6 bg-primary text-white p-8 sm:p-12 shadow-2xl border border-neutral-800 flex flex-col justify-between min-h-[480px]">
           <div>
             <div className="flex justify-between items-center mb-6 pb-4 border-b border-neutral-700">
               <span className="font-label-sm text-xs uppercase tracking-widest text-neutral-400">
-                {t.calculator.projectedTotal} ({years} Years Horizon)
+                {isTH ? "ผลลัพธ์จำลอง" : "Projected Outcome"} ({years} Years)
               </span>
-              <span className="text-xs bg-white/10 px-3 py-1 text-sand-100 font-label-sm">
+              <span className="text-xs bg-white/10 px-3 py-1 text-platinum font-label-sm">
                 Compound Simulation
               </span>
             </div>
 
             <div className="mb-8">
               <span className="text-xs text-neutral-400 uppercase tracking-widest block font-label-sm mb-1">
-                {t.calculator.projectedTotal}
+                {isTH ? "มูลค่าสินทรัพย์สุทธิประมาณการ" : "Estimated Total Net Worth"}
               </span>
               <div className="font-headline-md text-3xl sm:text-5xl text-white font-normal">
                 CHF {Math.round(totalProjectedWealth).toLocaleString()}
@@ -170,8 +169,8 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
             <div className="space-y-3.5 mb-8">
               <div className="flex justify-between items-center text-xs sm:text-sm pb-2 border-b border-neutral-800">
                 <span className="text-neutral-300 flex items-center gap-2">
-                  <Building className="w-4 h-4 text-sand-200" />
-                  Real Estate Asset Value
+                  <Building className="w-4 h-4 text-platinum" />
+                  Strategic Asset Value
                 </span>
                 <span className="font-medium text-white">
                   CHF {Math.round(projectedRealEstateValue).toLocaleString()}
@@ -180,8 +179,8 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
 
               <div className="flex justify-between items-center text-xs sm:text-sm pb-2 border-b border-neutral-800">
                 <span className="text-neutral-300 flex items-center gap-2">
-                  <DollarSign className="w-4 h-4 text-sand-200" />
-                  {t.calculator.interestEarned}
+                  <DollarSign className="w-4 h-4 text-platinum" />
+                  Cumulative Yield Distributions
                 </span>
                 <span className="font-medium text-white">
                   CHF {Math.round(cumulativeRentalIncome).toLocaleString()}
@@ -190,8 +189,8 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
 
               <div className="flex justify-between items-center text-xs sm:text-sm pb-2 border-b border-neutral-800">
                 <span className="text-neutral-300 flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-sand-200" />
-                  Liquid Capital &amp; Fixed Income
+                  <Shield className="w-4 h-4 text-platinum" />
+                  Liquid Reserves &amp; Treasury
                 </span>
                 <span className="font-medium text-white">
                   CHF {Math.round(projectedLiquidValue).toLocaleString()}
@@ -202,9 +201,9 @@ export default function InvestmentCalculator({ onOpenPortal }: InvestmentCalcula
 
           <button
             onClick={() => onOpenPortal("consultation")}
-            className="w-full bg-burgundy hover:bg-burgundy-light text-white py-4 font-label-sm text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 font-semibold shadow-md"
+            className="w-full bg-white text-primary hover:bg-neutral-100 py-4 font-label-sm text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 font-semibold shadow-md"
           >
-            <span>{t.calculator.consultBtn}</span>
+            <span>{isTH ? "ขอรับรายงานวิเคราะห์จัดสรรสินทรัพย์" : "Request Bespoke Allocation Report"}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

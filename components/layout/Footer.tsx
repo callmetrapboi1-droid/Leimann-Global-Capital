@@ -1,155 +1,171 @@
 "use client";
 
-import { Phone, Mail, MapPin, Shield } from "lucide-react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { MapPin, Mail, ArrowUp, ShieldCheck, ArrowRight, Landmark } from "lucide-react";
 
 interface FooterProps {
-  onOpenPortal?: (tab?: "login" | "consultation" | "dossier") => void;
+  onOpenLegal?: (type: "legal" | "privacy") => void;
 }
 
-export default function Footer({ onOpenPortal }: FooterProps) {
-  const { t } = useLanguage();
+export default function Footer({ onOpenLegal }: FooterProps) {
+  const { language } = useLanguage();
+  const isTH = language === "TH";
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <footer id="footer" className="bg-white text-on-surface pt-20 pb-12 border-t border-outline-variant/50">
-      <div className="max-w-container-max mx-auto px-6 sm:px-12 lg:px-margin-desktop">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
-          {/* Brand & Purpose (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-primary flex items-center justify-center text-white font-headline-sm text-base font-semibold shadow-xs">
+    <footer className="bg-surface-container-lowest border-t border-secondary-container text-on-surface w-full pt-16 pb-12 transition-all">
+      <div className="max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-secondary-container">
+          {/* Col 1: Brand, Crest & Purpose (5 Cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="w-9 h-9 rounded bg-primary text-on-primary flex items-center justify-center font-display-md text-lg font-bold shadow-xs group-hover:bg-on-primary-fixed-variant transition-colors">
                 L
               </div>
-              <div>
-                <span className="font-headline-md text-2xl text-primary font-normal tracking-tight block">
-                  Leimann Global Capital GmbH
+              <div className="flex flex-col">
+                <span className="font-display-md text-2xl text-primary font-bold tracking-tight">
+                  Leimann Global Capital
                 </span>
-                <span className="text-[10px] text-secondary font-label-sm uppercase tracking-[0.25em] block">
-                  Swiss Private Wealth &amp; Prime Real Estate
+                <span className="font-label-md text-[10px] text-secondary uppercase tracking-widest -mt-0.5">
+                  Swiss Family Investment Platform
                 </span>
               </div>
-            </div>
-            <p className="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed font-light">
-              {t.footer.brandDesc}
+            </Link>
+
+            <p className="font-body-md text-sm text-on-surface-variant leading-relaxed max-w-md">
+              {isTH
+                ? "Leimann Global Capital เป็นแพลตฟอร์มด้านการลงทุนและธุรกิจที่ถือครองโดยเอกชน มีฐานอยู่ในประเทศสวิตเซอร์แลนด์ และเป็น Subholding ของ ActivaSwiss AG Family Office"
+                : "Leimann Global Capital is a privately held investment and business platform based in Switzerland, operating as a subholding of the ActivaSwiss AG Family Office."}
             </p>
-            <div className="flex items-center gap-2 pt-2 text-[11px] text-secondary">
-              <Shield className="w-4 h-4 text-primary shrink-0" />
-              <span>{t.footer.compliance}</span>
+
+            <div className="pt-2 flex items-center gap-2 text-xs font-label-md text-primary">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              <span className="font-semibold">Subholding of ActivaSwiss AG • Freienbach SZ</span>
             </div>
           </div>
 
-          {/* Navigation Links (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="font-label-sm text-xs uppercase tracking-widest text-primary font-bold mb-5">
-              {t.footer.disciplinesNav}
+          {/* Col 2: Main Navigation (2 Cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-label-md text-xs uppercase tracking-widest text-primary font-bold mb-4">
+              {isTH ? "เมนูหลัก" : "NAVIGATION"}
             </h4>
-            <ul className="space-y-2.5 font-body-md text-xs sm:text-sm text-on-surface-variant font-light">
+            <ul className="space-y-2.5 font-body-md text-sm">
               <li>
-                <a href="#hero" className="hover:text-primary transition-colors">
-                  {t.nav.home}
-                </a>
+                <Link href="/" className="text-secondary hover:text-primary transition-colors flex items-center gap-1 group">
+                  <span className="group-hover:translate-x-0.5 transition-transform">{isTH ? "หน้าหลัก (Home)" : "Home"}</span>
+                </Link>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-primary transition-colors">
-                  {t.nav.realEstate}
-                </a>
+                <Link href="/about" className="text-secondary hover:text-primary transition-colors flex items-center gap-1 group">
+                  <span className="group-hover:translate-x-0.5 transition-transform">{isTH ? "เกี่ยวกับเรา" : "About Us"}</span>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-primary transition-colors">
-                  {t.nav.services}
-                </a>
+                <Link href="/investments" className="text-secondary hover:text-primary transition-colors flex items-center gap-1 group">
+                  <span className="group-hover:translate-x-0.5 transition-transform">{isTH ? "การลงทุนและความร่วมมือ" : "Investments"}</span>
+                </Link>
               </li>
               <li>
-                <a href="#vision" className="hover:text-primary transition-colors">
-                  {t.nav.vision}
-                </a>
+                <Link href="/heritage" className="text-secondary hover:text-primary transition-colors flex items-center gap-1 group">
+                  <span className="group-hover:translate-x-0.5 transition-transform">{isTH ? "มรดกและประวัติ" : "Heritage"}</span>
+                </Link>
               </li>
               <li>
-                <a href="#capital-investment" className="hover:text-primary transition-colors">
-                  {t.nav.capitalInvestment}
-                </a>
-              </li>
-              <li>
-                <a href="#heritage" className="hover:text-primary transition-colors">
-                  {t.nav.aboutUs}
-                </a>
+                <Link href="/contact" className="text-secondary hover:text-primary transition-colors flex items-center gap-1 group">
+                  <span className="group-hover:translate-x-0.5 transition-transform">{isTH ? "ติดต่อเรา" : "Contact"}</span>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Swiss & Global Desks (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="font-label-sm text-xs uppercase tracking-widest text-primary font-bold mb-5">
-              {t.footer.executiveDesks}
+          {/* Col 3: Focus & Mandates (2 Cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-label-md text-xs uppercase tracking-widest text-primary font-bold mb-4">
+              {isTH ? "ขอบเขตหลัก" : "FOCUS AREAS"}
             </h4>
-            <ul className="space-y-2.5 font-body-md text-xs sm:text-sm text-on-surface-variant font-light">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                <span><strong>Küsnacht (ZH)</strong></span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                <span><strong>Zurich City</strong></span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                <span><strong>Geneva</strong></span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                <span><strong>London</strong></span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                <span><strong>Singapore</strong></span>
-              </li>
+            <ul className="space-y-2.5 font-body-md text-xs text-secondary">
+              <li className="hover:text-primary transition-colors">Private Investments</li>
+              <li className="hover:text-primary transition-colors">Technology &amp; Innovation</li>
+              <li className="hover:text-primary transition-colors">International Business</li>
+              <li className="hover:text-primary transition-colors">Strategic Collaborations</li>
+              <li className="hover:text-primary transition-colors font-medium text-primary">ANAVIA AG Mandate</li>
             </ul>
           </div>
 
-          {/* Contact Direct (3 cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="font-label-sm text-xs uppercase tracking-widest text-primary font-bold mb-5">
-              {t.footer.contactDesk}
+          {/* Col 4: Domicile & Direct Line (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-label-md text-xs uppercase tracking-widest text-primary font-bold mb-4">
+              {isTH ? "สำนักงานจดทะเบียน" : "REGISTERED OFFICE"}
             </h4>
-            <div className="space-y-3 text-xs sm:text-sm text-on-surface-variant font-body-md font-light">
-              <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary shrink-0" />
-                <a href="tel:+41794005416" className="text-primary font-medium hover:underline transition-colors">
-                  (+41) 79 400 54 16
-                </a>
+
+            <div className="space-y-2.5 font-body-md text-xs text-on-surface-variant">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <span>Unterdorfstrasse 12, 8808 Freienbach SZ, Switzerland</span>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <a href="mailto:concierge@leimannglobal.com" className="hover:text-primary transition-colors">
-                  concierge@leimannglobal.com
+                <a
+                  href="mailto:leimannglobalcapital@info.ch"
+                  className="text-primary font-semibold hover:underline"
+                >
+                  leimannglobalcapital@info.ch
                 </a>
               </p>
-              <p className="flex items-start gap-2 pt-1 text-secondary">
-                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span>Boglerenstrasse 67, CH-8700 Küsnacht, Switzerland</span>
-              </p>
+            </div>
+
+            <div className="pt-1">
+              <Link
+                href="/contact"
+                className="inline-flex items-center space-x-1.5 text-xs font-label-md uppercase tracking-wider text-primary font-bold hover:underline group"
+              >
+                <span>{isTH ? "ส่งข้อความติดต่อโดยตรง" : "Send Confidential Message"}</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Sub-Footer */}
-        <div className="pt-8 border-t border-outline-variant/40 flex flex-col sm:flex-row justify-between items-center text-xs text-secondary font-light">
-          <p className="mb-4 sm:mb-0">
-            © {new Date().getFullYear()} {t.footer.copyright}
-          </p>
-          <div className="flex flex-wrap gap-6 font-label-sm text-[11px] uppercase tracking-wider">
-            <a href="#" className="hover:text-primary transition-colors">
-              {t.footer.terms}
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              {t.footer.privacy}
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              {t.footer.cookies}
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              {t.footer.imprint}
-            </a>
+        {/* Bottom Bar: Copyright, Legal Links & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-body-md text-secondary">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Leimann Global Capital GmbH. All rights reserved.</p>
+            <span className="hidden sm:inline text-secondary-container">•</span>
+            <p className="font-caption text-secondary font-medium">A Subholding of ActivaSwiss AG</p>
+          </div>
+
+          <div className="flex items-center gap-6">
+            {onOpenLegal && (
+              <div className="flex items-center gap-4 font-label-md text-xs">
+                <button
+                  onClick={() => onOpenLegal("legal")}
+                  className="hover:text-primary transition-colors hover:underline"
+                >
+                  Legal Notice
+                </button>
+                <button
+                  onClick={() => onOpenLegal("privacy")}
+                  className="hover:text-primary transition-colors hover:underline"
+                >
+                  Privacy Policy
+                </button>
+              </div>
+            )}
+
+            {/* Back to top button */}
+            <button
+              onClick={scrollToTop}
+              className="p-2 border border-secondary-container rounded bg-surface hover:bg-surface-container hover:text-primary transition-all active:scale-95 shadow-xs"
+              title="Return to Top"
+              aria-label="Return to top"
+            >
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </div>

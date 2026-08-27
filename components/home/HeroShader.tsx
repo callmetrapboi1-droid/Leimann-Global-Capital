@@ -47,22 +47,25 @@ varying vec2 v_texCoord;
 void main() {
     vec2 uv = v_texCoord;
     
-    // Subtle platinum grain and light shift
-    float n = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
-    
-    // Soft gradient shift for 'platinum' feel
+    // Deep dark Swiss luxury aesthetic with warm amber-gold shimmer
     float t = u_time * 0.12;
-    float l = sin(uv.x * 2.0 + t + (u_mouse.x / u_resolution.x) * 0.5) * 0.5 + 0.5;
-    float m = cos(uv.y * 3.0 - t * 0.5 + (u_mouse.y / u_resolution.y) * 0.5) * 0.5 + 0.5;
     
-    vec3 platinum = vec3(0.898, 0.894, 0.886); // Platinum Silver base
-    vec3 silver = vec3(0.95, 0.95, 0.96);
-    vec3 white = vec3(1.0, 1.0, 1.0);
+    float wave1 = sin(uv.x * 2.8 + t + (u_mouse.x / u_resolution.x) * 0.5) * 0.5 + 0.5;
+    float wave2 = cos(uv.y * 3.2 - t * 0.6 + (u_mouse.y / u_resolution.y) * 0.5) * 0.5 + 0.5;
+    float wave3 = sin((uv.x + uv.y) * 2.0 + t * 0.4) * 0.5 + 0.5;
     
-    vec3 color = mix(platinum, silver, l * 0.35);
-    color = mix(color, white, m * 0.25);
+    // Deep dark noir base: vec3(0.03, 0.035, 0.045)
+    // Warm charcoal slate: vec3(0.07, 0.08, 0.10)
+    // Subtle champagne gold highlight: vec3(0.77, 0.65, 0.50) * 0.18
+    vec3 darkBase = vec3(0.031, 0.035, 0.047);
+    vec3 charcoal = vec3(0.055, 0.063, 0.082);
+    vec3 goldAccent = vec3(0.772, 0.658, 0.502) * 0.15;
     
-    // Add micro-grain for paper/metal texture
+    vec3 color = mix(darkBase, charcoal, wave1 * 0.6);
+    color += goldAccent * (wave2 * wave3);
+    
+    // Fine platinum grain noise
+    float n = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
     color += (n - 0.5) * 0.015;
     
     gl_FragColor = vec4(color, 1.0);
@@ -139,7 +142,7 @@ void main() {
   }, []);
 
   return (
-    <div className="absolute inset-0 w-full h-full opacity-70 pointer-events-none">
+    <div className="absolute inset-0 w-full h-full opacity-90 pointer-events-none">
       <canvas
         ref={canvasRef}
         className="block w-full h-full"
