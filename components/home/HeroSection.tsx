@@ -13,21 +13,22 @@ export default function HeroSection({ onOpenPortal }: HeroSectionProps) {
   const isTH = language === "TH";
 
   return (
-    <section className="relative w-full min-h-[620px] lg:min-h-[700px] h-[90vh] flex items-center overflow-hidden bg-surface">
-      {/* Background High-Definition Swiss Architecture Visual */}
+    <section className="relative w-full min-h-[640px] lg:min-h-[720px] h-[92vh] flex items-center overflow-hidden bg-surface">
+      {/* Background Ultra-Sharp Crystal Clear Swiss Architecture Visual */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2600&q=98"
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=100"
           alt="Swiss Modern Financial Architecture"
-          className="w-full h-full object-cover object-right md:object-[75%_center] opacity-90"
+          className="w-full h-full object-cover object-right md:object-[80%_center] opacity-100 contrast-[1.05] brightness-[1.02]"
+          loading="eager"
         />
-        {/* Seamless, Natural Full-Bleed Gradient: NO Card, NO Box Boundary */}
-        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/85 to-transparent w-full md:w-3/4"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface/30"></div>
+        {/* Soft, Precision Left-Side Gradient to ensure 100% Text Legibility while keeping Image Crystal Sharp on Right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 md:via-surface/80 to-transparent w-full md:w-3/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-surface/20 md:hidden"></div>
       </div>
 
       <div className="relative z-20 w-full max-w-container-max mx-auto px-margin-desktop max-md:px-margin-mobile flex flex-col justify-center h-full py-12">
-        {/* Direct Text on Canvas - NO Card Container, 100% Sharp Contrast */}
+        {/* Direct Text on Canvas - NO Card Container, 100% Sharp High-End Contrast */}
         <div className="max-w-2xl animate-fadeIn">
           {/* Main Display Headline */}
           <h1 className="font-display-lg text-display-lg max-md:text-headline-lg-mobile text-primary mb-stack-md leading-tight font-bold tracking-tight">
@@ -58,10 +59,10 @@ export default function HeroSection({ onOpenPortal }: HeroSectionProps) {
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#about-summary"
-              className="inline-flex items-center space-x-2 bg-primary text-on-primary px-7 py-3.5 rounded font-label-md text-label-md transition-all hover:bg-on-primary-fixed-variant shadow-sm active:scale-95"
+              className="inline-flex items-center space-x-2 bg-primary text-on-primary px-7 py-3.5 rounded font-label-md text-label-md transition-all hover:bg-on-primary-fixed-variant shadow-sm active:scale-95 group"
             >
               <span>{isTH ? "สำรวจโลกของเรา (Explore Our World)" : "Explore Our World"}</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </a>
 
             <Link
