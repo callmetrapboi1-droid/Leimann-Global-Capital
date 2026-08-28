@@ -1,4 +1,4 @@
-export type Language = "EN" | "TH";
+export type Language = "EN" | "TH" | "DE";
 
 export interface Translations {
   // Navigation
@@ -489,6 +489,258 @@ export const translations: Record<Language, Translations> = {
         "Direct access for prospective partners and principals regarding confidential mandates.",
       callBtn: "Initiate Private Contact",
       vaultBtn: "Client Portal Access",
+    },
+  },
+
+  DE: {
+    nav: {
+      home: "Home",
+      aboutUs: "Über uns",
+      investments: "Investitionen & Kooperationen",
+      heritage: "Herkunft & Werte",
+      contact: "Kontakt",
+      portalBtn: "Investor Portal",
+      deskBtn: "Swiss Desk",
+      zurichTime: "Freienbach / Zürich",
+    },
+    hero: {
+      tagline: "Schweizer Private Investment Plattform • Subholding der ActivaSwiss AG",
+      titleLine1: "Globale Perspektive.",
+      titleLine2: "Langfristige Vision.",
+      subtitleTH: "Schweizer Investment- und Geschäftsplattform",
+      description:
+        "Leimann Global Capital ist eine privat gehaltene Investment- und Geschäftsplattform mit Sitz in der Schweiz. Als Teil der Anlagestruktur der Familie Leimann und Subholding des ActivaSwiss AG Family Office verfolgen wir ausgewählte Investitionen, strategische Kooperationen und internationale Geschäftsvorhaben.",
+      approachSummary:
+        "Unser Ansatz basiert auf einer langfristigen Perspektive, unternehmerischem Denken und einer internationalen Ausrichtung.",
+      ctaExplore: "Unsere Welt entdecken",
+      ctaHeritage: "Unsere Herkunft entdecken",
+      ctaContact: "Kontakt aufnehmen",
+      established: "Subholding des ActivaSwiss AG Family Office",
+      cards: {
+        about: {
+          title: "ÜBER UNS",
+          desc: "Eine Schweizer Investmentplattform mit internationalem Horizont.",
+        },
+        investments: {
+          title: "INVESTITIONEN & KOOPERATIONEN",
+          desc: "Ausgewählte Opportunitäten, Kooperationen und strategische Projekte.",
+        },
+        heritage: {
+          title: "HERKUNFT",
+          desc: "Aufbauend auf einem generationenübergreifenden Unternehmergeist.",
+        },
+      },
+    },
+    globalPerspective: {
+      badge: "Eine globale Perspektive",
+      heading: "Wo bedeutende Opportunitäten entstehen",
+      paragraph1:
+        "Wir glauben, dass bedeutende Opportunitäten an der Schnittstelle von Branchen, Märkten und Beziehungen entstehen.",
+      paragraph2:
+        "Leimann Global Capital agiert mit einem agilen und unternehmerischen Ansatz und evaluiert gezielt Opportunitäten über globale Märkte und Industrien hinweg.",
+      pillars: {
+        independent: "Unabhängig.",
+        entrepreneurial: "Unternehmerisch.",
+        international: "International.",
+        combinedLine: "Unabhängig. Unternehmerisch. International.",
+      },
+      familyEnterprise: {
+        title: "Teil eines Familienunternehmens",
+        desc1:
+          "Leimann Global Capital ist Teil der übergeordneten Anlagestruktur der Familie Leimann.",
+        desc2:
+          "Als Subholding der ActivaSwiss AG, dem Family Office in der Schweiz, bauen wir auf einem soliden unternehmerischen Fundament auf und entwickeln neue Opportunitäten für die Zukunft.",
+        cta: "Unsere Herkunft entdecken →",
+      },
+    },
+    aboutUs: {
+      badge: "Über uns",
+      heading: "Über Leimann Global Capital",
+      p1: "Leimann Global Capital ist eine Schweizer Investment- und Geschäftsplattform mit internationaler Ausrichtung.",
+      p2: "Wir konzentrieren uns auf ausgewählte Investitionen, strategische Partnerschaften und Geschäftsmöglichkeiten, bei denen langfristiges Denken, unternehmerische Agilität und internationale Netzwerke nachhaltige Werte schaffen.",
+      flexibleHighlight: "Unser Ansatz ist bewusst flexibel.",
+      p3: "Anstatt starren Mandaten zu folgen, bewerten wir jede Opportunität individuell und fokussieren uns auf Bereiche, in denen unsere Erfahrung, unser Netzwerk und unsere langfristige Perspektive eine signifikante Wirkung entfalten.",
+      approachTitle: "Unser Ansatz",
+      approaches: {
+        longTerm: {
+          title: "Langfristige Perspektive",
+          desc: "Wir glauben an nachhaltige Wertschöpfung und blicken über kurzfristige Marktzyklen hinaus.",
+        },
+        entrepreneurial: {
+          title: "Unternehmerisches Denken",
+          desc: "Wir schätzen Eigeninitiative, Unabhängigkeit und die Fähigkeit, Chancen gezielt zu entwickeln.",
+        },
+        international: {
+          title: "Internationale Ausrichtung",
+          desc: "Wir agieren mit einem globalen Mindset und fördern grenzüberschreitende Beziehungen und Opportunitäten.",
+        },
+        partnerships: {
+          title: "Selektive Partnerschaften",
+          desc: "Wir priorisieren Engagements und Beziehungen mit klarer strategischer Logik und langfristigem Potenzial.",
+        },
+      },
+      familyOffice: {
+        title: "Teil des ActivaSwiss Family Office",
+        desc1:
+          "Leimann Global Capital ist eine Subholding der ActivaSwiss AG, einer Investmentplattform und dem Family Office im Besitz der Familie Leimann.",
+        desc2:
+          "Die Anlagestruktur der Familie vereint ein gewachsenes unternehmerisches Fundament mit ausgewählten Investitionen über diverse Sektoren hinweg.",
+        desc3:
+          "Fest in der Schweiz verwurzelt, entwickelt Leimann Global Capital eine zunehmend internationale Dimension – ein neues Kapitel in der kontinuierlichen Weiterentwicklung des Familienunternehmens.",
+        subholdingBadge: "Subholding des ActivaSwiss AG Family Office",
+      },
+    },
+    investments: {
+      badge: "Investitionen & Kooperationen",
+      heading: "Ausgewählte Investitionen & Kooperationen",
+      intro:
+        "Leimann Global Capital engagiert sich in ausgewählten Direktinvestitionen, strategischen Kooperationen und internationalen Projekten. Unsere Aktivitäten sind opportunitätsgetrieben und nicht auf eine einzelne Branche beschränkt. Wir interessieren uns für Unternehmen, Technologien und Partner mit langfristigem Potenzial und internationaler Perspektive.",
+      focusTitle: "Fokusbereiche",
+      focusAreas: {
+        privateInvestments: {
+          title: "Private Investitionen",
+          desc: "Ausgewählte Beteiligungen an unternehmerischen Gesellschaften und Direktinvestitionen.",
+        },
+        techInnovation: {
+          title: "Technologie & Innovation",
+          desc: "Zukunftstechnologien und hochpräzise Schweizer Ingenieurskunst mit nachhaltigem Wertpotenzial.",
+        },
+        intlBusiness: {
+          title: "Internationales Geschäft",
+          desc: "Grenzüberschreitende Marktentwicklung, Handelsinitiativen und internationale Expansion.",
+        },
+        strategicCollab: {
+          title: "Strategische Kooperationen",
+          desc: "Selektive Partnerschaften, bei denen Erfahrung, Schweizer Werte und Netzwerke gemeinsame Ziele beschleunigen.",
+        },
+      },
+      selectedCollab: {
+        badge: "AUSGEWÄHLTE KOOPERATION",
+        company: "ANAVIA AG",
+        industry: "Schweizer Luft- und Raumfahrttechnologie",
+        description:
+          "Strategische Kooperation mit Fokus auf internationale Markterschliessung und strategische Partnerschaften.",
+        focusLabel: "Fokus",
+        focusTags: [
+          "Internationale Märkte",
+          "Strategische Partnerschaften",
+          "Business Development",
+        ],
+        learnMore: "Mehr erfahren →",
+        designNote:
+          "Diskrete strategische Kooperation im Bereich Schweizer Hochpräzisionstechnologie.",
+      },
+      futureOpportunities: {
+        title: "Zukünftige Opportunitäten",
+        desc: "Unser Portfolio und Partnernetzwerk entwickeln sich kontinuierlich weiter. Leimann Global Capital bleibt bestrebt, erstklassige Beziehungen aufzubauen und Vorhaben mit strategischer Relevanz zu begleiten.",
+      },
+    },
+    heritage: {
+      badge: "Herkunft & Werte",
+      heading: "Auf Herkunft gebaut. Auf die Zukunft fokussiert.",
+      intro:
+        "Leimann Global Capital baut auf einem unternehmerischen Fundament auf, das durch unabhängiges Denken, Geschäftsentwicklung und generationenübergreifende Verantwortung geprägt ist. Die Geschichte der Familie Leimann ist in der Schweiz verwurzelt und spiegelt eine Kultur von Verlässlichkeit, Diskretion und Weitsicht wider.",
+      foundation: {
+        title: "Ein unternehmerisches Fundament",
+        desc: "Über Jahrzehnte hinweg hat die Familie Leimann vielfältige unternehmerische Aktivitäten aufgebaut. Verwurzelt in Schweizer Werten wie Sorgfalt und Präzision wurden nachhaltige Werte geschaffen.",
+      },
+      activaStory: {
+        title: "Die Entwicklung der ActivaSwiss AG",
+        desc: "Ein zentrales Kapitel bildete die Gründung und Entwicklung der ActivaSwiss AG. Ursprünglich als Investmentplattform mit solider Immobilienbasis gegründet, entwickelte sich ActivaSwiss zum umfassenden Family Office der Familie.",
+      },
+      nextChapter: {
+        title: "Das nächste Kapitel",
+        desc: "Leimann Global Capital verkörpert ein neues, internationales Kapitel innerhalb des Familienunternehmens. Während unsere Wurzeln fest in der Schweiz verankert bleiben, reicht unser Horizont weit über Grenzen hinaus.",
+      },
+      valuesTitle: "Unsere Werte",
+      values: {
+        independence: {
+          title: "Unabhängigkeit",
+          desc: "Die Freiheit, mit langfristiger Perspektive zu denken und zu handeln.",
+        },
+        entrepreneurship: {
+          title: "Unternehmergeist",
+          desc: "Überzeugung von Eigeninitiative, Verantwortung und nachhaltiger Wertschöpfung.",
+        },
+        trust: {
+          title: "Vertrauen",
+          desc: "Bedeutende Geschäftsbeziehungen basieren auf Beständigkeit und Integrität.",
+        },
+        continuity: {
+          title: "Kontinuität",
+          desc: "Verantwortungsvolle generationenübergreifende Verwaltung und Weitsicht.",
+        },
+        international: {
+          title: "Internationale Perspektive",
+          desc: "Nutzung von Opportunitäten und Partnerschaften in globalen Märkten.",
+        },
+      },
+      quote: {
+        foundation: "Herkunft bildet das Fundament.",
+        opportunity: "Die Zukunft schafft Opportunitäten.",
+        connection:
+          "Leimann Global Capital verbindet beides.",
+        built: "Auf Herkunft gebaut. Durch die Zukunft geprägt.",
+      },
+    },
+    contact: {
+      badge: "Kontakt",
+      heading: "Lassen Sie uns vernetzen",
+      intro:
+        "Wir freuen uns auf den Austausch mit ausgewählten Partnern über Investitionen, strategische Kooperationen und internationale Geschäftsvorhaben. Unser Team in der Schweiz steht Ihnen gerne zur Verfügung.",
+      companyName: "Leimann Global Capital GmbH Schweiz",
+      addressLabel: "Hauptsitz / Domizil",
+      address: "Unterdorfstrasse 12, 8808 Freienbach SZ Schweiz",
+      emailLabel: "Geschäftliche & Strategische Opportunitäten",
+      email: "leimannglobalcapital@info.ch",
+      areasTitle: "Interessenbereiche",
+      areas: [
+        "Investitionsopportunitäten",
+        "Strategische Kooperationen",
+        "Internationale Geschäftsentwicklung",
+        "Technologie & Innovation",
+        "Grenzüberschreitende Partnerschaften",
+      ],
+      form: {
+        nameLabel: "Vollständiger Name / Institution",
+        namePlaceholder: "z.B. Dr. Alexander Weber / Family Office",
+        emailLabel: "Direkte E-Mail-Adresse",
+        emailPlaceholder: "principal@institution.ch",
+        interestLabel: "Primärer Interessenbereich",
+        messageLabel: "Vertrauliche Nachricht / Zusammenfassung",
+        messagePlaceholder:
+          "Bitte skizzieren Sie die strategische Logik oder das Vorhaben...",
+        submitBtn: "Anfrage senden",
+        successMsg:
+          "Vielen Dank für Ihre Kontaktaufnahme. Ihre Anfrage wurde vertraulich an unser Team in Freienbach SZ weitergeleitet.",
+        ndaNote:
+          "Sämtliche Anfragen werden gemäss Schweizer Fiduciary- und Vertraulichkeitsstandards behandelt.",
+      },
+    },
+    footer: {
+      brand: "LEIMANN GLOBAL CAPITAL",
+      tagline:
+        "Privat gehalten. Unternehmerisch getrieben. International fokussiert.",
+      companyName: "Leimann Global Capital GmbH Schweiz",
+      address: "Unterdorfstrasse 12, 8808 Freienbach SZ Schweiz",
+      email: "leimannglobalcapital@info.ch",
+      navTitle: "Navigation",
+      ownership: "Teil der Anlagestruktur der Familie Leimann",
+      subholding: "Eine Subholding der ActivaSwiss AG",
+      legalNotice: "Impressum",
+      privacyPolicy: "Datenschutz",
+      rights: "Alle Rechte vorbehalten.",
+    },
+    concierge: {
+      title: "Swiss Desk & Weltzeit",
+      subtitle: "Freienbach SZ • Zürich • London • Singapur • Bangkok",
+      clocksTitle: "Globale Finanzzentren (Live)",
+      marketsTitle: "Strategische Benchmarks & FX",
+      directLine: "Desk für strategische Opportunitäten",
+      partnerDesc:
+        "Direkter Zugang für ausgewählte Partner und Mandatsträger bezüglich vertraulicher Vorhaben.",
+      callBtn: "Direktkontakt aufnehmen",
+      vaultBtn: "Client Portal Zugang",
     },
   },
 

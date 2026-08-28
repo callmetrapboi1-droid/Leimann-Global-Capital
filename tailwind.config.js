@@ -9,59 +9,68 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#00216e",
-        "primary-container": "#0033a0",
-        "on-primary": "#ffffff",
-        "on-primary-container": "#8ea6ff",
-        "on-primary-fixed": "#001550",
-        "on-primary-fixed-variant": "#133ca8",
-        "primary-fixed": "#dce1ff",
-        "primary-fixed-dim": "#b6c4ff",
-        "inverse-primary": "#b6c4ff",
-        
-        "secondary": "#5e5e5d",
-        "secondary-container": "#e0dfdd",
-        "secondary-fixed": "#e3e2e0",
-        "secondary-fixed-dim": "#c7c6c4",
-        "on-secondary": "#ffffff",
-        "on-secondary-container": "#626361",
-        "on-secondary-fixed": "#1b1c1b",
-        "on-secondary-fixed-variant": "#464746",
-        
-        "tertiary": "#1c2b34",
-        "tertiary-container": "#32414b",
-        "tertiary-fixed": "#d5e5f1",
-        "tertiary-fixed-dim": "#b9c9d5",
-        "on-tertiary": "#ffffff",
-        "on-tertiary-container": "#9dadb9",
-        "on-tertiary-fixed": "#0e1d26",
-        "on-tertiary-fixed-variant": "#3a4953",
-        
-        "surface": "#f8f9fa",
-        "surface-bright": "#f8f9fa",
-        "surface-dim": "#d9dadb",
-        "surface-variant": "#e1e3e4",
-        "surface-tint": "#3456c1",
-        "surface-container-lowest": "#ffffff",
-        "surface-container-low": "#f3f4f5",
-        "surface-container": "#edeeef",
-        "surface-container-high": "#e7e8e9",
-        "surface-container-highest": "#e1e3e4",
-        "inverse-surface": "#2e3132",
-        "inverse-on-surface": "#f0f1f2",
-        
-        "background": "#f8f9fa",
-        "on-background": "#191c1d",
-        "on-surface": "#191c1d",
-        "on-surface-variant": "#444653",
-        
-        "outline": "#747684",
-        "outline-variant": "#c4c5d5",
-        "platinum": "#c4c5d5",
-        "error": "#ba1a1a",
-        "error-container": "#ffdad6",
+        // Black (Dark) with Gold-Brown Palette (ActivaSwiss Signature Style)
+        "primary": "#f3ede2", // Warm Ivory Platinum for crisp readable headings
+        "primary-container": "#c5a880", // Signature Gold-Brown
+        "on-primary": "#050608", // Pitch Black on Gold-Brown CTA buttons
+        "on-primary-container": "#1c150c",
+        "on-primary-fixed": "#050608",
+        "on-primary-fixed-variant": "#dfd5c6",
+        "primary-fixed": "#dfd5c6",
+        "primary-fixed-dim": "#c5a880", // Gold-Brown Dim
+        "inverse-primary": "#050608",
+
+        "secondary": "#a89f91", // Warm Champagne Muted Slate/Sand
+        "secondary-container": "#1e222b", // Hairline Obsidian Border
+        "secondary-fixed": "#2d3340",
+        "secondary-fixed-dim": "#a89f91",
+        "on-secondary": "#050608",
+        "on-secondary-container": "#c5a880",
+        "on-secondary-fixed": "#f3ede2",
+        "on-secondary-fixed-variant": "#dfd5c6",
+
+        "tertiary": "#ffffff", // Pure Diamond White
+        "tertiary-container": "#181b22",
+        "tertiary-fixed": "#e8e4dc",
+        "tertiary-fixed-dim": "#c5a880",
+        "on-tertiary": "#050608",
+        "on-tertiary-container": "#dfd5c6",
+        "on-tertiary-fixed": "#050608",
+        "on-tertiary-fixed-variant": "#a89f91",
+
+        // Dark Luxury Black & Obsidian Surfaces
+        "surface": "#0d0f12", // Alpine Dark Surface
+        "surface-bright": "#161920",
+        "surface-dim": "#050608",
+        "surface-variant": "#121519",
+        "surface-tint": "#c5a880",
+        "surface-container-lowest": "#050608", // Deepest Pitch Black
+        "surface-container-low": "#0f1217", // Deep Charcoal/Obsidian Panel
+        "surface-container": "#14171e", // Dark Card Panel
+        "surface-container-high": "#1a1e27",
+        "surface-container-highest": "#222733",
+        "inverse-surface": "#f3ede2",
+        "inverse-on-surface": "#050608",
+
+        "background": "#08090b", // Deep Black Background
+        "on-background": "#f3ede2",
+        "on-surface": "#f3ede2", // Warm Ivory Body Text
+        "on-surface-variant": "#a89f91", // Secondary Muted Grey/Sand
+
+        "outline": "#363c48",
+        "outline-variant": "#20242e",
+        "platinum": "#2a303c",
+
+        // Gold-Brown Tokens
+        "gold": "#c5a880", // Rich Gold-Brown
+        "goldbrown": "#c5a880", // Signature Gold-Brown
+        "gold-light": "#dfd5c6", // Light Champagne Gold
+        "gold-dark": "#9e825b", // Deep Bronze Gold
+
+        "error": "#ff6b6b",
+        "error-container": "#3e1414",
         "on-error": "#ffffff",
-        "on-error-container": "#93000a",
+        "on-error-container": "#ffb4ab",
       },
       borderRadius: {
         DEFAULT: "0.125rem",

@@ -6,8 +6,8 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-// The 6 Sections required for HOME in exact flow:
-// Hero → About → Investment → Global Perspective → Heritage → Family Office
+// The 6 Scenes of the Home Presentation:
+// Scene 01: Hero (Vision) → Scene 02: About (Identity) → Scene 03: Investments (Focus Areas) → Scene 04: Global Perspective → Scene 05: Heritage → Scene 06: Family Office
 import HeroSection from "@/components/home/HeroSection";
 import HomeAboutSection from "@/components/home/HomeAboutSection";
 import HomeInvestmentsSection from "@/components/home/HomeInvestmentsSection";
@@ -41,28 +41,28 @@ function HomePageContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
-      {/* Top Navbar */}
+    <div className="min-h-screen flex flex-col bg-background text-on-surface antialiased selection:bg-gold selection:text-black relative">
+      {/* Top Floating Glass Navbar */}
       <Navbar onOpenPortal={handleOpenPortal} />
 
-      {/* Main Content: Flow: Hero → About → Investment → Global Perspective → Heritage → Family Office */}
-      <main className="w-full bg-surface">
-        {/* ① Hero */}
+      {/* Main Presentation Content: 6 Seamless Scenes */}
+      <main className="w-full bg-background">
+        {/* Scene 01: Vision & Stance */}
         <HeroSection onOpenPortal={handleOpenPortal} />
 
-        {/* ② About Us */}
+        {/* Scene 02: Identity & Approach */}
         <HomeAboutSection />
 
-        {/* ③ Investments & Collaborations */}
+        {/* Scene 03: Focus Areas & Strategic Mandate */}
         <HomeInvestmentsSection />
 
-        {/* ④ Global Perspective */}
+        {/* Scene 04: Global Perspective & Intersections */}
         <HomeGlobalPerspectiveSection />
 
-        {/* ⑤ Heritage */}
+        {/* Scene 05: Swiss Heritage & Legacy */}
         <HomeHeritageSection />
 
-        {/* ⑥ Family Enterprise / Family Office */}
+        {/* Scene 06: Family Enterprise & Institutional Structure */}
         <HomeFamilyEnterpriseSection />
       </main>
 

@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8f9fa;
-  --foreground: #191c1d;
+  --background: #08090b;
+  --foreground: #f3ede2;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -18,93 +19,109 @@ body {
   font-family: var(--font-inter), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 100% 50%, rgba(197, 168, 128, 0.02) 0%, transparent 40%);
+  background-attachment: fixed;
 }
 
-/* Smooth Luxury Scroll Reveal Animations */
+/* Presentation-Grade Fluid Scroll Reveals */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(28px);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+  will-change: opacity, transform, filter;
 }
 
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(-36px);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+  will-change: opacity, transform, filter;
 }
 
 .reveal-left.active {
   opacity: 1;
   transform: translateX(0);
+  filter: blur(0px);
 }
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(36px);
+  filter: blur(4px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
+  will-change: opacity, transform, filter;
 }
 
 .reveal-right.active {
   opacity: 1;
   transform: translateX(0);
+  filter: blur(0px);
 }
 
-/* Image Zoom & Card Hover Micro-Interactions */
-.img-zoom-container {
-  overflow: hidden;
-}
-
-.img-zoom {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-}
-
-.img-zoom-container:hover .img-zoom {
-  transform: scale(1.04);
-}
-
+/* Presentation Deck Cards with Elevated Hover */
 .luxury-card {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .luxury-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px -8px rgba(0, 33, 110, 0.08), 0 0 0 1px rgba(0, 33, 110, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.8), 0 0 25px -4px rgba(197, 168, 128, 0.2);
+  border-color: rgba(197, 168, 128, 0.45);
 }
 
-/* Custom Scrollbar */
+/* Image Zoom & Smooth Camera Motion */
+.img-zoom-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-zoom {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+}
+
+.img-zoom-container:hover .img-zoom {
+  transform: scale(1.05);
+}
+
+/* Custom Scrollbar - Minimalist Dark */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f8f9fa;
+  background: #08090b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c4c5d5;
+  background: #1e222b;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00216e;
+  background: #c5a880;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(14px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
