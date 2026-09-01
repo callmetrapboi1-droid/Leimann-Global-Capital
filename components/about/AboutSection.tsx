@@ -11,6 +11,8 @@ import {
   Landmark,
   ShieldCheck,
   Building2,
+  Mail,
+  Phone,
 } from "lucide-react";
 
 export default function AboutSection() {
@@ -45,6 +47,35 @@ export default function AboutSection() {
       desc: t.aboutUs.approaches.partnerships.desc,
       tag: "Strategic Alignment",
       image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80",
+    },
+  ];
+
+  const teamMembers = [
+    {
+      name: "Matheus Leimann",
+      role: "Founder & CEO",
+      image: "https://activaswiss.vercel.app/assets/aboutus/aboutus_matheus_cropped.png",
+      bio: [
+        "Born in 2001 in Rio de Janeiro, Brazil, Matheus is the youngest son of Urs Leimann. He completed a commercial apprenticeship with a professional baccalaureate in Business Hospitality Management and furthered his studies at EHL (École Hôtelière de Lausanne), Singapore campus.",
+        "Alongside his academic path, he built a career in Asia—working as a fashion model for various luxury brands in Thailand and Taiwan and later beginning an acting career with WeTV (Tencent Group), one of Asia's leading media companies. At ActivaSwiss AG, Matheus focuses on strengthening networks between the Asia-Pacific and Swiss markets, with a particular emphasis on identifying and supporting new private equity opportunities.",
+      ],
+      languages: "German, English, French, Portuguese, Spanish, Thai, Mandarin",
+      hobbies: "Golf, Tennis, Fencing, Traveling, Cooking, Fashion & Entertainment",
+      phones: ["+41 79 138 83 29", "+66 93 448 66 48 (TH)"],
+      email: "matheus.leimann@activaswiss.ch",
+    },
+    {
+      name: "Lindalva Rodrigues da Silva",
+      role: "Executive Assistant",
+      image: "https://activaswiss.vercel.app/assets/aboutus/aboutus_lindalva.png",
+      bio: [
+        "Born in Fortaleza, Brazil, Lindalva supports the executive management team of ActivaSwiss AG on a part-time basis. She began her career in Rio de Janeiro, Brazil, working as an executive assistant at an international trade company, where she gained valuable professional experience at senior organizational levels.",
+        "As the partner of Urs Leimann and mother of Matheus, she now contributes to the smooth coordination of administrative and organizational tasks within the Family Office.",
+      ],
+      languages: "German, Portuguese, Italian, Spanish",
+      hobbies: "Golf, Traveling, Horse Riding, Fashion",
+      phones: ["+41 79 501 62 67"],
+      email: "lindalva.rodriguesdasilva@activaswiss.ch",
     },
   ];
 
@@ -138,7 +169,126 @@ export default function AboutSection() {
           </div>
         </section>
 
-        {/* ② SECTION 2: Our Approach (4 Cards) */}
+        {/* Leadership: the two members of Leimann Global Capital */}
+        <section id="leadership" className="border-t border-secondary-container pt-8 scroll-mt-24">
+          <div className="mb-12 reveal">
+            <span className="font-label-md text-xs font-semibold uppercase tracking-widest text-secondary">
+              02 · LEIMANN GLOBAL CAPITAL
+            </span>
+            <h2 className="mt-1 font-display-md text-3xl text-primary sm:text-4xl">Our Team</h2>
+            <div className="mb-4 h-px w-12 bg-platinum" />
+            <p className="max-w-2xl font-body-md text-body-md leading-relaxed text-on-surface-variant">
+              Leimann Global Capital is led by a focused two-member team, combining an international perspective with precise executive coordination.
+            </p>
+          </div>
+
+          <div className="space-y-10 lg:space-y-14">
+            {teamMembers.map((member, index) => (
+              <article
+                key={member.email}
+                className="grid grid-cols-1 overflow-hidden border border-secondary-container bg-surface-container-low shadow-sm lg:grid-cols-12 reveal"
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="relative min-h-[360px] lg:col-span-5 lg:min-h-[525px]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                </div>
+
+                <div className="flex flex-col p-7 sm:p-9 lg:col-span-7 lg:p-11">
+                  <div>
+                    <p className="font-label-md text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+                      {member.role}
+                    </p>
+                    <h3 className="mt-2 font-display-md text-3xl leading-tight text-primary sm:text-4xl lg:text-[46px]">
+                      {member.name}
+                    </h3>
+                    <div className="mt-5 h-px w-full bg-secondary-container" />
+                  </div>
+
+                  <div className="mt-5 space-y-4 font-body-md text-sm leading-relaxed text-on-surface-variant sm:text-base">
+                    {member.bio.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+
+                  <dl className="mt-6 space-y-2 border-t border-secondary-container pt-5 font-body-md text-sm leading-relaxed text-on-surface-variant">
+                    <div>
+                      <dt className="inline font-semibold text-primary">Languages: </dt>
+                      <dd className="inline">{member.languages}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-primary">Hobbies: </dt>
+                      <dd className="inline">{member.hobbies}</dd>
+                    </div>
+                  </dl>
+
+                  <div className="mt-7 grid gap-3 border-t border-secondary-container pt-5 text-sm sm:grid-cols-2 sm:items-start">
+                    <div className="space-y-1.5">
+                      {member.phones.map((phone) => (
+                        <a
+                          key={phone}
+                          href={`tel:${phone.replace(/[^+\d]/g, "")}`}
+                          className="flex items-center gap-2 font-label-md font-semibold text-primary transition-colors hover:text-gold"
+                        >
+                          <Phone className="h-3.5 w-3.5 text-gold" />
+                          {phone}
+                        </a>
+                      ))}
+                    </div>
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="flex items-center gap-2 break-all font-label-md font-semibold text-primary transition-colors hover:text-gold sm:justify-self-end"
+                    >
+                      <Mail className="h-3.5 w-3.5 shrink-0 text-gold" />
+                      {member.email}
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* A short bridge from the people behind the platform to its family heritage. */}
+        <section id="our-history" className="overflow-hidden border border-[#6c4d49] bg-[#350702] scroll-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            <div className="p-8 sm:p-11 lg:col-span-5 lg:p-14">
+              <span className="font-label-md text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-light">
+                Leimann Family Heritage
+              </span>
+              <h2 className="mt-3 font-display-lg text-4xl leading-none text-primary sm:text-5xl">Our History</h2>
+              <p className="mt-7 font-body-md text-base font-semibold leading-relaxed text-primary">
+                From generation to generation, the name endures, the values remain.
+              </p>
+              <p className="mt-4 max-w-xl font-body-md text-sm leading-relaxed text-primary/75 sm:text-base">
+                The Leimann Family has stood as a symbol of resilience and vision since the dawn of the industrial revolution in Switzerland.
+              </p>
+              <Link
+                href="/heritage"
+                className="group mt-8 inline-flex items-center gap-2 border border-primary/40 px-5 py-3 font-label-md text-[11px] font-semibold uppercase tracking-[0.13em] text-primary transition-colors hover:border-gold hover:bg-primary hover:text-[#350702]"
+              >
+                Explore Our Heritage
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+            <div className="relative min-h-[280px] lg:col-span-7 lg:min-h-full">
+              <img
+                src="https://activaswiss.vercel.app/assets/aboutus/aboutus_ourhistory.png"
+                alt="Leimann family history"
+                className="absolute inset-0 h-full w-full object-cover object-center grayscale"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#350702]/55 via-transparent to-transparent" />
+            </div>
+          </div>
+        </section>
+
+        {/* ③ SECTION 2: Our Approach (4 Cards) */}
         <section id="our-approach" className="pt-8 border-t border-secondary-container scroll-mt-24">
           <div className="mb-12 reveal">
             <span className="font-label-md text-xs uppercase tracking-widest text-secondary font-semibold">
