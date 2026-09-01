@@ -14,7 +14,7 @@ export default function HomeHeritageSection() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
         {/* Left Column: Alpine Visual with Zoom Effect */}
         <div className="md:col-span-6 reveal img-zoom-container">
-          <div className="aspect-[4/3] rounded overflow-hidden relative border border-secondary-container bg-surface-container shadow-2xl">
+          <div className="aspect-[4/3] overflow-hidden relative border border-secondary-container bg-surface-container">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe5R_bk1aHwmv7qdI6JX3gy6xlasDAqiRX1uSm1yXObOTpHXk1SL9zQX63qjNulpo-jHdgDDurUMNCQtuejUBaVUR_dihAexLP7t9xYGW7mrZfpbziD5Ioh6I9Jy6JAUPDqWFYTMPXLlThPcyrLNWblcCgWN-Zo1plIgpAkDM-AjxLXxABY5jzTZ4_Fy8aRRWYznaaFD_HjVSjdRfqWJEwlluPfqrWgxqE5f7EANn6-Ijob1pjzA"
               alt="Swiss Alpine Heritage & Generational Legacy"
@@ -27,7 +27,7 @@ export default function HomeHeritageSection() {
         {/* Right Column: Heritage Narrative */}
         <div className="md:col-span-6 space-y-6 reveal">
           <div>
-            <span className="font-label-md text-xs uppercase tracking-widest text-gold font-semibold block mb-2">
+            <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
               {t.heritage.badge}
             </span>
             <h2 className="font-display-md text-display-md max-md:text-headline-lg-mobile text-primary mt-1 mb-stack-sm">

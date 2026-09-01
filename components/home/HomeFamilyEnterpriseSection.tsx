@@ -12,15 +12,15 @@ export default function HomeFamilyEnterpriseSection() {
   return (
     <section id="family-enterprise-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile bg-background border-t border-secondary-container overflow-hidden scroll-mt-20">
       <div className="max-w-container-max mx-auto">
-        <div className="p-8 sm:p-12 border border-secondary-container rounded bg-surface-container shadow-2xl reveal">
+        <div className="border-y border-secondary-container py-10 sm:py-14 reveal">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
             <div className="lg:col-span-8 space-y-4">
-              <span className="font-label-md text-xs uppercase tracking-widest text-gold font-semibold block mb-1">
+              <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
                 {t.globalPerspective.familyEnterprise.title}
               </span>
               
               <div className="flex items-center gap-2">
-                <span className="bg-gold/15 text-gold border border-gold/30 font-label-md text-xs px-3 py-1 rounded uppercase tracking-wider font-semibold">
+                <span className="text-gold font-label-md text-[10px] uppercase tracking-[0.14em] font-semibold">
                   {t.aboutUs.familyOffice.subholdingBadge}
                 </span>
               </div>
@@ -40,7 +40,7 @@ export default function HomeFamilyEnterpriseSection() {
               <div className="pt-2">
                 <Link
                   href="/heritage"
-                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-gold to-gold-light text-black font-label-md text-sm px-6 py-3 rounded hover:brightness-110 transition-all active:scale-95 shadow-sm font-semibold group"
+                  className="inline-flex items-center space-x-2 border border-primary/35 text-primary font-label-md text-[11px] uppercase tracking-[0.12em] px-5 py-3 hover:border-gold hover:text-gold transition-colors font-semibold group"
                 >
                   <span>{t.globalPerspective.familyEnterprise.cta}</span>
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -49,12 +49,12 @@ export default function HomeFamilyEnterpriseSection() {
             </div>
 
             <div className="lg:col-span-4 flex flex-col justify-center items-start lg:items-end">
-              <div className="p-8 bg-surface-container-low border border-gold/20 w-full text-center space-y-3 rounded shadow-md luxury-card">
-                <Landmark className="w-9 h-9 text-gold mx-auto stroke-1" />
+              <div className="border-l border-secondary-container px-8 py-2 w-full text-left space-y-3">
+                <Landmark className="w-7 h-7 text-gold stroke-1" />
                 <span className="font-display-md text-2xl text-primary block font-bold">
                   ActivaSwiss AG
                 </span>
-                <span className="text-xs font-label-md uppercase tracking-wider text-gold block font-semibold">
+                <span className="text-[10px] font-label-md uppercase tracking-[0.14em] text-secondary block font-semibold">
                   Family Office Switzerland
                 </span>
                 <p className="font-body-md text-xs text-secondary leading-relaxed pt-1">

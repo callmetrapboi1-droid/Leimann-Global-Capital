@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Globe, Layers, TrendingUp, Users } from "lucide-react";
 
 export default function HomeGlobalPerspectiveSection() {
   const { t, language } = useLanguage();
@@ -12,7 +11,7 @@ export default function HomeGlobalPerspectiveSection() {
     <section id="global-perspective-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile bg-background border-t border-secondary-container overflow-hidden scroll-mt-20">
       <div className="max-w-container-max mx-auto">
         <div className="max-w-3xl mb-12 reveal">
-          <span className="font-label-md text-xs uppercase tracking-widest text-gold font-semibold block mb-2">
+          <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
             {t.globalPerspective.badge}
           </span>
           <h2 className="font-display-md text-display-md max-md:text-headline-lg-mobile text-primary mt-1 mb-stack-sm">
@@ -28,12 +27,12 @@ export default function HomeGlobalPerspectiveSection() {
         </div>
 
         {/* 3 Intersections: Industries, Markets, Relationships */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-12">
+        <div className="grid grid-cols-1 border-y border-secondary-container md:grid-cols-3 mb-12">
           {/* Intersection 1: Industries */}
-          <div className="p-8 border border-secondary-container rounded bg-surface-container shadow-xs flex flex-col justify-between luxury-card reveal">
+          <div className="border-b border-secondary-container py-7 md:border-b-0 md:pr-8 reveal">
             <div>
-              <Layers className="w-8 h-8 text-gold mb-4 stroke-1" />
-              <h3 className="font-headline-lg text-xl text-primary mb-2 font-medium">
+              <span className="font-label-md text-[11px] font-semibold text-gold">01</span>
+              <h3 className="mt-5 font-headline-lg text-xl text-primary mb-3 font-medium">
                 {isTH ? "Industries (อุตสาหกรรม)" : isDE ? "Branchen (Industries)" : "Industries"}
               </h3>
               <p className="font-body-md text-sm text-secondary leading-relaxed">
@@ -44,16 +43,16 @@ export default function HomeGlobalPerspectiveSection() {
                   : "Bridging financial technology, high-precision engineering, and innovative venture sectors."}
               </p>
             </div>
-            <span className="font-label-md text-xs text-gold font-semibold mt-6 pt-3 border-t border-secondary-container block">
+            <span className="font-label-md text-[10px] uppercase tracking-[0.12em] text-secondary font-semibold mt-7 pt-4 border-t border-secondary-container block">
               Cross-Industry Synergy
             </span>
           </div>
 
           {/* Intersection 2: Markets */}
-          <div className="p-8 border border-secondary-container rounded bg-surface-container shadow-xs flex flex-col justify-between luxury-card reveal" style={{ transitionDelay: "100ms" }}>
+          <div className="border-b border-secondary-container py-7 md:border-b-0 md:border-l md:px-8 reveal" style={{ transitionDelay: "100ms" }}>
             <div>
-              <TrendingUp className="w-8 h-8 text-gold mb-4 stroke-1" />
-              <h3 className="font-headline-lg text-xl text-primary mb-2 font-medium">
+              <span className="font-label-md text-[11px] font-semibold text-gold">02</span>
+              <h3 className="mt-5 font-headline-lg text-xl text-primary mb-3 font-medium">
                 {isTH ? "Markets (ตลาด)" : isDE ? "Märkte (Markets)" : "Markets"}
               </h3>
               <p className="font-body-md text-sm text-secondary leading-relaxed">
@@ -64,16 +63,16 @@ export default function HomeGlobalPerspectiveSection() {
                   : "Connecting financial hubs across Switzerland, Europe, Asia, and high-growth global corridors."}
               </p>
             </div>
-            <span className="font-label-md text-xs text-gold font-semibold mt-6 pt-3 border-t border-secondary-container block">
+            <span className="font-label-md text-[10px] uppercase tracking-[0.12em] text-secondary font-semibold mt-7 pt-4 border-t border-secondary-container block">
               Global Corridor Access
             </span>
           </div>
 
           {/* Intersection 3: Relationships */}
-          <div className="p-8 border border-secondary-container rounded bg-surface-container shadow-xs flex flex-col justify-between luxury-card reveal" style={{ transitionDelay: "200ms" }}>
+          <div className="py-7 md:border-l md:pl-8 reveal" style={{ transitionDelay: "200ms" }}>
             <div>
-              <Users className="w-8 h-8 text-gold mb-4 stroke-1" />
-              <h3 className="font-headline-lg text-xl text-primary mb-2 font-medium">
+              <span className="font-label-md text-[11px] font-semibold text-gold">03</span>
+              <h3 className="mt-5 font-headline-lg text-xl text-primary mb-3 font-medium">
                 {isTH ? "Relationships (ความสัมพันธ์)" : isDE ? "Beziehungen (Relationships)" : "Relationships"}
               </h3>
               <p className="font-body-md text-sm text-secondary leading-relaxed">
@@ -84,15 +83,15 @@ export default function HomeGlobalPerspectiveSection() {
                   : "Cultivating enduring trust with exceptional entrepreneurs, institutions, and family enterprises."}
               </p>
             </div>
-            <span className="font-label-md text-xs text-gold font-semibold mt-6 pt-3 border-t border-secondary-container block">
+            <span className="font-label-md text-[10px] uppercase tracking-[0.12em] text-secondary font-semibold mt-7 pt-4 border-t border-secondary-container block">
               Enduring Fiduciary Trust
             </span>
           </div>
         </div>
 
         {/* 3 Core Triad Tags */}
-        <div className="p-6 border border-gold/20 rounded bg-surface-container flex flex-col sm:flex-row justify-between items-center gap-4 reveal">
-          <span className="font-label-md text-xs uppercase tracking-widest text-gold font-bold">
+        <div className="border-y border-secondary-container py-6 flex flex-col sm:flex-row justify-between items-center gap-4 reveal">
+          <span className="font-label-md text-[11px] uppercase tracking-[0.14em] text-primary font-semibold">
             {t.globalPerspective.pillars.combinedLine}
           </span>
           <span className="font-body-md text-xs text-secondary">
