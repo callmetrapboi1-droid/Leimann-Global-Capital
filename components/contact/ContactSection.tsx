@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { CheckCircle2, ShieldCheck, MapPin, Mail, Map } from "lucide-react";
 
@@ -49,18 +48,7 @@ export default function ContactSection() {
   };
 
   return (
-    <div className="w-full bg-surface text-on-surface">
-      {/* Top Banner / Breadcrumb */}
-      <div className="py-8 border-b border-secondary-container bg-surface-container-low">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="flex items-center gap-2 text-xs font-label-md text-secondary uppercase tracking-widest mb-1 animate-fadeIn">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <span>/</span>
-            <span className="text-primary font-bold">Contact</span>
-          </div>
-        </div>
-      </div>
-
+    <div className="section-light w-full text-on-surface">
       {/* Main Content Area */}
       <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap flex flex-col gap-12">
         {/* Header Section */}
@@ -76,7 +64,7 @@ export default function ContactSection() {
         </section>
 
         {/* Bento Grid Layout */}
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <section className="section-dark editorial-dark-band grid grid-cols-1 gap-gutter md:grid-cols-12">
           {/* Contact Form (Spans 8 cols) */}
           <div className="md:col-span-8 p-8 md:p-12 rounded border border-secondary-container bg-surface-container-lowest shadow-sm reveal">
             {submitted ? (
@@ -240,9 +228,9 @@ export default function ContactSection() {
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
                 <a
                   className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors font-medium break-all"
-                  href="mailto:leimannglobalcapital@info.ch"
+                  href="mailto:info@leimannglobalcapital.ch"
                 >
-                  leimannglobalcapital@info.ch
+                  info@leimannglobalcapital.ch
                 </a>
               </div>
             </div>
@@ -254,7 +242,7 @@ export default function ContactSection() {
                 alt="Freienbach SZ Switzerland Map and Surroundings"
                 className="w-full h-full object-cover img-zoom opacity-80"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface-container-low/90 via-surface-container-low/40 to-transparent flex flex-col justify-end p-4">
+              <div className="section-dark absolute inset-0 bg-gradient-to-t from-surface-container-low/90 via-surface-container-low/40 to-transparent flex flex-col justify-end p-4">
                 <div className="flex items-center gap-2 text-primary font-label-md text-xs font-semibold">
                   <Map className="w-4 h-4" />
                   <span>Freienbach SZ • Canton of Schwyz, Switzerland</span>

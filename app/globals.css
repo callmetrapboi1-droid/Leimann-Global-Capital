@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0b0d;
+  --background: #101416;
   --foreground: #eeeae1;
 }
 
@@ -25,6 +25,200 @@ body {
 ::selection {
   background: #c5a880;
   color: #0a0b0d;
+}
+
+.brand-logo {
+  display: inline-flex;
+  width: max-content;
+  flex-direction: column;
+  align-items: stretch;
+  color: inherit;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brand-logo__name {
+  font-family: var(--font-bodoni-moda), serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+}
+
+.brand-logo__descriptor {
+  margin-top: 0.05em;
+  padding-left: 0.08em;
+  color: inherit;
+  font-family: var(--font-bodoni-moda), serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+
+.brand-logo--nav .brand-logo__name {
+  font-size: 1.78rem;
+}
+
+.brand-logo--nav .brand-logo__descriptor {
+  font-size: 0.62rem;
+}
+
+.brand-logo--footer .brand-logo__name {
+  font-size: 2.7rem;
+}
+
+.brand-logo--footer .brand-logo__descriptor {
+  font-size: 0.92rem;
+}
+
+.brand-logo--intro .brand-logo__name {
+  font-size: clamp(3.1rem, 9vw, 8.5rem);
+}
+
+.brand-logo--intro .brand-logo__descriptor {
+  font-size: clamp(1.05rem, 2.45vw, 2.4rem);
+}
+
+.brand-logo--compact .brand-logo__name {
+  font-size: 1.65rem;
+}
+
+.brand-logo--compact .brand-logo__descriptor {
+  font-size: 0.58rem;
+}
+
+/* Light editorial sections reuse the existing component vocabulary with a
+   brighter material palette, keeping layout and content behavior unchanged. */
+.section-light {
+  background-color: #f4f1eb !important;
+  color: #172023 !important;
+}
+
+.section-light .text-primary,
+.section-light .text-on-surface,
+.section-light .text-on-background {
+  color: #172023 !important;
+}
+
+.section-light .text-secondary,
+.section-light .text-on-surface-variant {
+  color: #5f6968 !important;
+}
+
+.section-light .text-gold {
+  color: #8a6841 !important;
+}
+
+.section-light .border-secondary-container,
+.section-light .border-outline-variant,
+.section-light .border-outline-gold {
+  border-color: rgba(23, 32, 35, 0.16) !important;
+}
+
+.section-light .border-primary\/35 {
+  border-color: rgba(23, 32, 35, 0.32) !important;
+}
+
+.section-light .bg-background,
+.section-light .bg-surface {
+  background-color: #f4f1eb !important;
+}
+
+.section-light .bg-surface-container-lowest,
+.section-light .bg-surface-container-low,
+.section-light .bg-surface-container,
+.section-light .bg-surface-container-high {
+  background-color: #fffdf8 !important;
+}
+
+.section-light .bg-primary {
+  background-color: #172023 !important;
+}
+
+.section-light .text-on-primary {
+  color: #f8f5ef !important;
+}
+
+.section-light input,
+.section-light textarea,
+.section-light select {
+  color: #172023;
+}
+
+.section-light input::placeholder,
+.section-light textarea::placeholder {
+  color: rgba(67, 78, 78, 0.55) !important;
+}
+
+.section-light .section-dark {
+  background-color: #101416 !important;
+  color: #f3ede2 !important;
+}
+
+.section-light .section-dark .text-primary,
+.section-light .section-dark .text-on-surface,
+.section-light .section-dark .text-on-background {
+  color: #f3ede2 !important;
+}
+
+.section-light .section-dark .text-secondary,
+.section-light .section-dark .text-on-surface-variant {
+  color: #a89f91 !important;
+}
+
+.section-light .section-dark .border-secondary-container,
+.section-light .section-dark .border-outline-variant {
+  border-color: #2a303c !important;
+}
+
+.section-light .section-dark .text-gold {
+  color: #c5a880 !important;
+}
+
+.section-light .section-dark .bg-background,
+.section-light .section-dark .bg-surface {
+  background-color: #101416 !important;
+}
+
+.section-light .section-dark .bg-surface-container-lowest,
+.section-light .section-dark .bg-surface-container-low,
+.section-light .section-dark .bg-surface-container,
+.section-light .section-dark .bg-surface-container-high {
+  background-color: #171c1e !important;
+}
+
+.section-light .section-dark .bg-primary {
+  background-color: #f3ede2 !important;
+}
+
+.section-light .section-dark .text-on-primary {
+  color: #101416 !important;
+}
+
+.section-light .section-dark input,
+.section-light .section-dark textarea,
+.section-light .section-dark select {
+  color: #f3ede2;
+}
+
+.section-light .section-dark input::placeholder,
+.section-light .section-dark textarea::placeholder {
+  color: rgba(243, 237, 226, 0.42) !important;
+}
+
+.editorial-dark-band {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  padding: 5rem max(1.5rem, calc((100vw - 1280px) / 2 + 4rem));
+}
+
+@media (max-width: 767px) {
+  .editorial-dark-band {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 /* Presentation-Grade Fluid Scroll Reveals */
@@ -101,10 +295,10 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090b;
+  background: #101416;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e222b;
+  background: #53605e;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {

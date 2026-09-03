@@ -84,7 +84,7 @@ export default function LegalModal({ isOpen, type, onClose }: LegalModalProps) {
               <div>
                 <h4 className="font-semibold text-gold-300 mb-1">Contact for Privacy Matters</h4>
                 <p>
-                  Data Protection Officer, Leimann Global Capital GmbH, Unterdorfstrasse 12, 8808 Freienbach SZ, Switzerland. Email: leimannglobalcapital@info.ch
+                  Data Protection Officer, Leimann Global Capital GmbH, Unterdorfstrasse 12, 8808 Freienbach SZ, Switzerland. Email: info@leimannglobalcapital.ch
                 </p>
               </div>
             </>

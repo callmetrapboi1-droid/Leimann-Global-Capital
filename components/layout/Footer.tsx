@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowUp, ArrowRight } from "lucide-react";
+import BrandLogo from "@/components/common/BrandLogo";
 
 interface FooterProps {
   onOpenLegal?: (type: "legal" | "privacy") => void;
@@ -24,18 +25,8 @@ export default function Footer({ onOpenLegal }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-secondary-container">
           {/* Col 1: Brand & Purpose (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <div className="w-8 h-8 border border-white/30 bg-black/85 flex items-center justify-center font-display-md text-base font-medium text-primary">
-                L
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display-md text-xl text-primary font-medium tracking-tight">
-                  Leimann Global Capital
-                </span>
-                <span className="font-label-md text-[8px] font-semibold uppercase tracking-[0.22em] text-secondary">
-                  Swiss Private Investment Platform
-                </span>
-              </div>
+            <Link href="/" className="inline-flex text-primary transition-colors hover:text-gold">
+              <BrandLogo size="footer" />
             </Link>
 
             <p className="font-body-md text-sm text-secondary leading-relaxed max-w-md">
@@ -111,10 +102,10 @@ export default function Footer({ onOpenLegal }: FooterProps) {
               </p>
               <p>
                 <a
-                  href="mailto:leimannglobalcapital@info.ch"
+                  href="mailto:info@leimannglobalcapital.ch"
                   className="text-primary hover:text-gold transition-colors font-medium"
                 >
-                  leimannglobalcapital@info.ch
+                  info@leimannglobalcapital.ch
                 </a>
               </p>
             </div>

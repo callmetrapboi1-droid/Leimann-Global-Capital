@@ -10,7 +10,7 @@ export default function HomeFamilyEnterpriseSection() {
   const isDE = language === "DE";
 
   return (
-    <section id="family-enterprise-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile bg-background border-t border-secondary-container overflow-hidden scroll-mt-20">
+    <section id="family-enterprise-summary" className="section-light py-section-gap px-margin-desktop max-md:px-margin-mobile border-t border-secondary-container overflow-hidden scroll-mt-20">
       <div className="max-w-container-max mx-auto">
         <div className="border-y border-secondary-container py-10 sm:py-14 reveal">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">

@@ -61,7 +61,7 @@ export default function InvestmentsSection({ onOpenPortal }: InvestmentsSectionP
   ];
 
   return (
-    <div className="w-full bg-background text-on-surface">
+    <div className="section-light w-full text-on-surface">
       <div className="py-section-gap px-margin-desktop max-md:px-margin-mobile max-w-container-max mx-auto space-y-24">
         {/* SECTION 1: Intro */}
         <section id="investments-intro" className="scroll-mt-24">
@@ -113,7 +113,7 @@ export default function InvestmentsSection({ onOpenPortal }: InvestmentsSectionP
         </section>
 
         {/* SECTION 2: Focus Areas (4 Columns) */}
-        <section id="focus-areas" className="pt-8 border-t border-secondary-container scroll-mt-24">
+        <section id="focus-areas" className="section-dark editorial-dark-band scroll-mt-24">
           <div className="mb-12 reveal">
             <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
               {t.investments.badge}
@@ -260,7 +260,7 @@ export default function InvestmentsSection({ onOpenPortal }: InvestmentsSectionP
         </section>
 
         {/* SECTION 4: Future Opportunities */}
-        <section id="future-opportunities" className="border-t border-secondary-container pt-12 scroll-mt-24">
+        <section id="future-opportunities" className="section-dark editorial-dark-band scroll-mt-24">
           <div className="border-y border-secondary-container py-12 text-center max-w-4xl mx-auto space-y-4 reveal">
             <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block">
               FUTURE OPPORTUNITIES

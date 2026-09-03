@@ -54,7 +54,7 @@ export default function PresentationNav() {
       className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-end gap-3.5 pointer-events-auto"
     >
       {/* Subtle Slide Track Indicator */}
-      <div className="bg-[#08090b]/80 backdrop-blur-xl border border-[#c5a880]/20 rounded-full p-2.5 shadow-2xl flex flex-col items-center gap-3">
+      <div className="bg-[#f7f5f0]/92 backdrop-blur-xl border border-[#172023]/15 rounded-full p-2.5 shadow-2xl flex flex-col items-center gap-3">
         {scenes.map((scene, idx) => {
           const isActive = activeScene === scene.id;
           const label =
@@ -72,7 +72,7 @@ export default function PresentationNav() {
               aria-label={`Go to ${label}`}
             >
               {/* Tooltip on Hover */}
-              <span className="absolute right-7 px-2.5 py-1 rounded bg-[#0d0f14]/95 border border-[#c5a880]/30 text-[11px] font-label-md uppercase tracking-wider text-gold opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all pointer-events-none whitespace-nowrap shadow-xl">
+              <span className="absolute right-7 px-2.5 py-1 rounded bg-[#f7f5f0]/95 border border-[#172023]/20 text-[11px] font-label-md uppercase tracking-wider text-[#172023] opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all pointer-events-none whitespace-nowrap shadow-xl">
                 {label}
               </span>
 
@@ -80,8 +80,8 @@ export default function PresentationNav() {
               <div
                 className={`transition-all duration-500 rounded-full ${
                   isActive
-                    ? "w-2.5 h-6 bg-gradient-to-b from-gold to-gold-light shadow-[0_0_10px_rgba(197,168,128,0.6)]"
-                    : "w-2 h-2 bg-[#a89f91]/40 group-hover:bg-gold/80"
+                    ? "w-2.5 h-6 bg-gold-dark"
+                    : "w-2 h-2 bg-[#172023]/25 group-hover:bg-gold-dark/80"
                 }`}
               />
             </button>
@@ -90,7 +90,7 @@ export default function PresentationNav() {
       </div>
 
       {/* Progress Telemetry Indicator */}
-      <div className="text-[10px] font-label-md uppercase tracking-widest text-[#a89f91]/70 bg-[#08090b]/60 backdrop-blur-md px-2 py-0.5 rounded border border-[#c5a880]/15">
+      <div className="text-[10px] font-label-md uppercase tracking-widest text-[#172023]/60 bg-[#f7f5f0]/90 backdrop-blur-md px-2 py-0.5 rounded border border-[#172023]/15">
         {Math.round(progress)}%
       </div>
     </aside>

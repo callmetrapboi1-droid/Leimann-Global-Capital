@@ -10,7 +10,8 @@ export default function HomeAboutSection() {
   const isDE = language === "DE";
 
   return (
-    <section id="about-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile max-w-container-max mx-auto border-t border-secondary-container bg-background overflow-hidden scroll-mt-20">
+    <section id="about-summary" className="section-light py-section-gap px-margin-desktop max-md:px-margin-mobile border-t border-secondary-container overflow-hidden scroll-mt-20">
+      <div className="max-w-container-max mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
         {/* Left Column: Narrative */}
         <div className="md:col-span-6 space-y-6 reveal">
@@ -79,6 +80,7 @@ export default function HomeAboutSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -67,7 +67,7 @@ export default function HeritageSection() {
   ];
 
   return (
-    <div className="w-full bg-background text-on-surface">
+    <div className="section-light w-full text-on-surface">
       <div className="py-section-gap px-margin-desktop max-md:px-margin-mobile max-w-container-max mx-auto space-y-24">
         {/* SECTION 1: Overview */}
         <section id="heritage-hero" className="scroll-mt-24">
@@ -116,7 +116,7 @@ export default function HeritageSection() {
         </section>
 
         {/* SECTION 2: Family Enterprise Journey (3 Chapters) */}
-        <section id="family-evolution" className="pt-8 border-t border-secondary-container scroll-mt-24">
+        <section id="family-evolution" className="section-dark editorial-dark-band scroll-mt-24">
           <div className="mb-12 reveal">
             <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
               FAMILY ENTERPRISE JOURNEY
@@ -211,7 +211,7 @@ export default function HeritageSection() {
         </section>
 
         {/* SECTION 4: Looking Forward (Institutional Quote Block) */}
-        <section id="looking-forward" className="border-t border-secondary-container pt-12 scroll-mt-24">
+        <section id="looking-forward" className="section-dark editorial-dark-band scroll-mt-24">
           <div className="border-y border-secondary-container py-14 text-center max-w-4xl mx-auto reveal">
             <p className="font-display-md text-xl sm:text-2xl font-normal mb-2 text-primary leading-snug">
               {t.heritage.quote.foundation}

@@ -12,6 +12,7 @@ import {
   Globe,
 } from "lucide-react";
 import { marketTickers } from "@/data/markets";
+import BrandLogo from "@/components/common/BrandLogo";
 
 interface SideConciergeDrawerProps {
   isOpen: boolean;
@@ -70,9 +71,7 @@ export default function SideConciergeDrawer({
                 {t.concierge.title}
               </span>
             </div>
-            <h3 className="font-headline-sm text-xl text-on-surface font-normal">
-              Leimann Global Capital
-            </h3>
+            <BrandLogo size="compact" className="text-on-surface" />
             <p className="text-[10px] text-gold-400 uppercase tracking-widest">
               Subholding of ActivaSwiss AG
             </p>
@@ -206,11 +205,11 @@ export default function SideConciergeDrawer({
                 </p>
                 <div className="pt-2 space-y-2">
                   <a
-                    href="mailto:leimannglobalcapital@info.ch"
+                    href="mailto:info@leimannglobalcapital.ch"
                     className="w-full bg-primary hover:bg-primary-hover text-on-primary py-2.5 font-label-sm text-xs uppercase tracking-widest transition-all font-semibold flex items-center justify-center gap-2"
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    <span>leimannglobalcapital@info.ch</span>
+                    <span>info@leimannglobalcapital.ch</span>
                   </a>
                   <button
                     onClick={() => {

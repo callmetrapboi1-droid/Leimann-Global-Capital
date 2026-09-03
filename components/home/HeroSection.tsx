@@ -22,10 +22,10 @@ export default function HeroSection({ onOpenPortal }: HeroSectionProps) {
         <img
           src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=100"
           alt="Swiss modern financial architecture"
-          className="h-full w-full object-cover object-[62%_center] saturate-[.72] contrast-[1.1] brightness-[.68] md:object-[58%_center]"
+          className="h-full w-full object-cover object-[62%_center] saturate-[.72] contrast-[1.06] brightness-[.78] md:object-[58%_center]"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,14,.72)_0%,rgba(4,8,14,.28)_31%,rgba(4,8,14,.45)_72%,rgba(4,8,14,.88)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,8,14,.58)_0%,rgba(4,8,14,.18)_31%,rgba(4,8,14,.38)_72%,rgba(4,8,14,.78)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(3,7,12,.18)_49%,rgba(3,7,12,.58)_100%)]" />
       </div>
 
@@ -65,7 +65,7 @@ export default function HeroSection({ onOpenPortal }: HeroSectionProps) {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:gap-5">
             <a
               href="#about-summary"
-              className="inline-flex min-w-56 items-center justify-center border border-white/10 bg-black/80 px-7 py-4 font-label-md text-[11px] font-semibold uppercase tracking-[.12em] text-primary shadow-[0_14px_30px_rgba(0,0,0,.24)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50 hover:bg-black/95 active:translate-y-0"
+              className="inline-flex min-w-56 items-center justify-center border border-[#f4f1eb] bg-[#f4f1eb] px-7 py-4 font-label-md text-[11px] font-semibold uppercase tracking-[.12em] text-[#172023] shadow-[0_14px_30px_rgba(0,0,0,.18)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-light hover:bg-white active:translate-y-0"
             >
               {t.hero.ctaExplore}
             </a>

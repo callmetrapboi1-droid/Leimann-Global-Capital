@@ -53,7 +53,7 @@ export default function AboutSection() {
       languages: ["German", "English", "French", "Portuguese", "Spanish", "Thai", "Mandarin"],
       hobbies: "Golf, Tennis, Fencing, Traveling, Cooking, Fashion & Entertainment",
       phones: ["+41 79 138 83 29", "+66 93 448 66 48 (TH)"],
-      email: "matheus.leimann@activaswiss.ch",
+      email: "matheus.leimann@leimannglobalcapital.ch",
       fiduciarySeal: "Swiss Fiduciary Governance",
     },
     {
@@ -72,13 +72,13 @@ export default function AboutSection() {
       languages: ["German", "Portuguese", "Italian", "Spanish"],
       hobbies: "Golf, Traveling, Horse Riding, Fashion",
       phones: ["+41 79 501 62 67"],
-      email: "lindalva.rodriguesdasilva@activaswiss.ch",
+      email: "lindalva.rodriguesdasilva@leimannglobalcapital.ch",
       fiduciarySeal: "Family Office Administration",
     },
   ];
 
   return (
-    <div className="w-full bg-background text-on-surface">
+    <div className="section-light w-full text-on-surface">
       <div className="py-section-gap px-margin-desktop max-md:px-margin-mobile max-w-container-max mx-auto space-y-24">
         {/* SECTION 1: Narrative & Identity */}
         <section id="about-intro" className="scroll-mt-24">
@@ -215,16 +215,14 @@ export default function AboutSection() {
             </p>
           </div>
 
-          {/* 2-Column Side-by-Side Executive Cards (Both Photos Clearly Visible) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-10">
             {teamMembers.map((member, mIdx) => (
               <article
                 key={member.name}
-                className="border border-secondary-container bg-surface flex flex-col justify-between reveal overflow-hidden shadow-sm"
+                className="grid grid-cols-1 overflow-hidden border border-secondary-container bg-surface reveal shadow-sm lg:grid-cols-12"
                 style={{ transitionDelay: `${mIdx * 120}ms` }}
               >
-                {/* Clear, High-Resolution Portrait Photo */}
-                <div className="relative h-96 sm:h-[440px] w-full overflow-hidden bg-black">
+                <div className="relative h-96 w-full overflow-hidden bg-black sm:h-[480px] lg:col-span-5 lg:h-auto lg:min-h-[560px]">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -240,12 +238,16 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                {/* Narrative & Credentials */}
-                <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between space-y-6">
+                <div className="flex flex-col justify-between space-y-6 p-8 sm:p-10 lg:col-span-7 lg:p-12">
                   <div>
-                    <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-gold font-semibold block mb-1">
-                      {isTH ? member.titleTH : isDE ? member.titleDE : member.role}
-                    </span>
+                    <div className="mb-2 flex items-center gap-3">
+                      <span className="font-label-md text-[10px] font-semibold text-gold">
+                        0{mIdx + 1}
+                      </span>
+                      <span className="font-label-md text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">
+                        {isTH ? member.titleTH : isDE ? member.titleDE : member.role}
+                      </span>
+                    </div>
                     <h3 className="font-display-lg text-3xl text-primary font-normal">
                       {member.name}
                     </h3>
@@ -302,39 +304,37 @@ export default function AboutSection() {
         </section>
 
         {/* SECTION 4: Family History Bridge */}
-        <section id="our-history" className="overflow-hidden border border-secondary-container bg-[#0b0d11] scroll-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[400px]">
-            <div className="p-8 sm:p-11 lg:col-span-5 lg:p-14 space-y-4 flex flex-col justify-center">
-              <span className="font-label-md text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                Leimann Family Heritage
-              </span>
-              <h2 className="font-display-lg text-4xl leading-none text-primary sm:text-5xl">Our History</h2>
-              <div className="h-px w-12 bg-gold/40 my-4" />
-              <p className="font-body-md text-base font-semibold leading-relaxed text-primary">
+        <section id="our-history" className="section-dark relative left-1/2 w-screen -translate-x-1/2 overflow-hidden scroll-mt-24">
+          <div className="mx-auto grid max-w-container-max grid-cols-1 gap-8 px-7 py-12 sm:px-12 sm:py-14 lg:grid-cols-12 lg:gap-12 lg:px-margin-desktop lg:py-16">
+            <div className="lg:col-span-4">
+              <h2 className="font-display-lg text-5xl leading-none text-primary sm:text-6xl">
+                Our History
+              </h2>
+            </div>
+
+            <div className="space-y-4 font-body-md text-sm leading-relaxed text-primary sm:text-base lg:col-span-8 lg:max-w-3xl">
+              <p className="font-semibold">
                 From generation to generation, the name endures, the values remain.
               </p>
-              <p className="max-w-xl font-body-md text-sm leading-relaxed text-secondary sm:text-base">
-                The Leimann Family has stood as a symbol of resilience, independence, and long-term vision in Switzerland.
+              <p>
+                The <strong>Leimann Family</strong> has stood as a symbol of resilience and vision since the dawn of the industrial revolution in Switzerland.
               </p>
-              <div className="pt-2">
-                <Link
-                  href="/heritage"
-                  className="group inline-flex items-center gap-2 border border-primary/35 px-5 py-3 font-label-md text-[11px] font-semibold uppercase tracking-[0.13em] text-primary transition-colors hover:border-gold hover:text-gold"
-                >
-                  Explore Our Heritage
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
+              <p>
+                From the early 19th century onward, generations of Leimanns have embodied the spirit of entrepreneurship - building, leading, and preserving with integrity and foresight. Remaining steadfast in their values and united as a family, they have never lost their true identity.
+              </p>
+              <p>
+                Their legacy continues to thrive today - not merely honoring the past, but always thinking toward tomorrow.
+              </p>
             </div>
-            <div className="relative min-h-[320px] lg:min-h-[420px] lg:col-span-7 w-full h-full overflow-hidden bg-black flex">
-              <img
-                src="https://activaswiss.vercel.app/assets/aboutus/aboutus_ourhistory.png"
-                alt="Leimann family history"
-                className="w-full h-full object-cover object-[center_top] grayscale opacity-90 transition-transform duration-700 hover:scale-105"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0b0d11] via-[#0b0d11]/30 to-transparent w-1/3 pointer-events-none" />
-            </div>
+          </div>
+
+          <div className="w-full overflow-hidden bg-black">
+            <img
+              src="https://activaswiss.vercel.app/assets/aboutus/aboutus_ourhistory.png"
+              alt="Leimann family history"
+              className="block h-auto w-full grayscale opacity-95"
+              loading="eager"
+            />
           </div>
         </section>
 

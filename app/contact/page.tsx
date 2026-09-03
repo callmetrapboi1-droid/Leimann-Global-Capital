@@ -25,7 +25,7 @@ function ContactPageContent() {
     <div className="min-h-screen flex flex-col bg-surface text-on-surface relative">
       <Navbar onOpenPortal={handleOpenPortal} />
 
-      <main className="flex-1 w-full pt-8">
+      <main className="flex-1 w-full">
         <ContactSection />
       </main>
 

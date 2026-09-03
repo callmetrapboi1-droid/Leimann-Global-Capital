@@ -8,7 +8,7 @@ export default function HomeGlobalPerspectiveSection() {
   const isDE = language === "DE";
 
   return (
-    <section id="global-perspective-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile bg-background border-t border-secondary-container overflow-hidden scroll-mt-20">
+    <section id="global-perspective-summary" className="section-light py-section-gap px-margin-desktop max-md:px-margin-mobile border-t border-secondary-container overflow-hidden scroll-mt-20">
       <div className="max-w-container-max mx-auto">
         <div className="max-w-3xl mb-12 reveal">
           <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
