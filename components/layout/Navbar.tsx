@@ -175,19 +175,18 @@ export default function Navbar({ onOpenPortal }: NavbarProps) {
               </div>
             )}
           </div>
-
         </div>
       </div>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden bg-[#101416]/45 px-6 pb-10 pt-24 text-white backdrop-blur-[10px] animate-fadeIn sm:px-9">
+        <div className="fixed inset-0 z-10 flex items-center justify-center overflow-hidden bg-[#101416]/55 px-6 pb-10 pt-24 text-white backdrop-blur-[12px] animate-fadeIn sm:px-9">
           <div className="flex w-full max-w-3xl flex-col items-center gap-6 text-center sm:gap-8 lg:gap-9">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`max-w-[90vw] font-body-md text-3xl font-light uppercase tracking-normal transition-colors duration-300 sm:text-4xl lg:text-5xl ${
+                className={`font-body-md text-2xl font-light uppercase tracking-[.04em] transition-colors duration-300 sm:text-4xl ${
                   pathname === link.href ? "text-white" : "text-white/78 hover:text-white"
                 }`}
               >

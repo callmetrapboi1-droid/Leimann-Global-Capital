@@ -244,7 +244,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "Home",
       aboutUs: "About Us",
-      investments: "Investments & Collaborations",
+      investments: "Investments",
       heritage: "Heritage",
       contact: "Contact",
       portalBtn: "Investor Portal",
@@ -496,7 +496,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "Home",
       aboutUs: "Über uns",
-      investments: "Investitionen & Kooperationen",
+      investments: "Investitionen",
       heritage: "Herkunft & Werte",
       contact: "Kontakt",
       portalBtn: "Investor Portal",
@@ -748,7 +748,7 @@ export const translations: Record<Language, Translations> = {
     nav: {
       home: "หน้าหลัก",
       aboutUs: "เกี่ยวกับเรา",
-      investments: "การลงทุนและความร่วมมือ",
+      investments: "การลงทุน",
       heritage: "มรดกและประวัติความเป็นมา",
       contact: "ติดต่อเรา",
       portalBtn: "Investor Portal",

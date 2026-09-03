@@ -20,7 +20,7 @@ export default function HeroSection({ onOpenPortal }: HeroSectionProps) {
       {/* Full-bleed architectural canvas */}
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=3200&q=100"
+          src="/images/contactus_1.jpg"
           alt="Swiss modern financial architecture"
           className="h-full w-full object-cover object-[62%_center] saturate-[.72] contrast-[1.06] brightness-[.78] md:object-[58%_center]"
           loading="eager"

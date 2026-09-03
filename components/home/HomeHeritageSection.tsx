@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowRight } from "lucide-react";
 
 export default function HomeHeritageSection() {
   const { t, language } = useLanguage();
@@ -10,55 +8,53 @@ export default function HomeHeritageSection() {
   const isDE = language === "DE";
 
   return (
-    <section id="heritage-summary" className="py-section-gap px-margin-desktop max-md:px-margin-mobile max-w-container-max mx-auto border-t border-secondary-container bg-surface overflow-hidden scroll-mt-20">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-        {/* Left Column: Alpine Visual with Zoom Effect */}
-        <div className="md:col-span-6 reveal img-zoom-container">
-          <div className="aspect-[4/3] overflow-hidden relative border border-secondary-container bg-surface-container">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe5R_bk1aHwmv7qdI6JX3gy6xlasDAqiRX1uSm1yXObOTpHXk1SL9zQX63qjNulpo-jHdgDDurUMNCQtuejUBaVUR_dihAexLP7t9xYGW7mrZfpbziD5Ioh6I9Jy6JAUPDqWFYTMPXLlThPcyrLNWblcCgWN-Zo1plIgpAkDM-AjxLXxABY5jzTZ4_Fy8aRRWYznaaFD_HjVSjdRfqWJEwlluPfqrWgxqE5f7EANn6-Ijob1pjzA"
-              alt="Swiss Alpine Heritage & Generational Legacy"
-              className="w-full h-full object-cover img-zoom opacity-70 contrast-[1.1]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60"></div>
-          </div>
+    <section
+      id="heritage-summary"
+      className="relative isolate w-full min-h-[580px] md:min-h-[680px] flex items-center justify-center overflow-hidden border-t border-secondary-container bg-[#08090b] py-24 px-6 sm:px-9 lg:px-12 scroll-mt-20"
+    >
+      {/* Full-bleed Swiss Heritage Arches Canvas */}
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <img
+          src="/images/swiss-heritage-arches.jpg"
+          alt="Swiss Classical Arches Architecture & Heritage"
+          className="h-full w-full object-cover object-center saturate-[0.85] contrast-[1.08] brightness-[0.68] transition-transform duration-1000 ease-out hover:scale-[1.02]"
+        />
+        {/* Deep Contrast Vignette & Soft Gradient for Crisp Text Readability */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,10,13,0.72)_0%,rgba(8,10,13,0.38)_40%,rgba(8,10,13,0.6)_70%,rgba(8,10,13,0.92)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,rgba(5,7,9,0.7)_100%)]" />
+      </div>
+
+      {/* Floating Content in Front of the Image (Without Button) */}
+      <div className="relative z-10 mx-auto w-full max-w-4xl text-center py-6">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2.5 mb-5">
+          <span className="h-1.5 w-1.5 rounded-full bg-gold"></span>
+          <span className="font-label-md text-[11px] sm:text-xs font-semibold uppercase tracking-[0.24em] text-gold-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            {t.heritage.badge}
+          </span>
+          <span className="h-1.5 w-1.5 rounded-full bg-gold"></span>
         </div>
 
-        {/* Right Column: Heritage Narrative */}
-        <div className="md:col-span-6 space-y-6 reveal">
-          <div>
-            <span className="font-label-md text-[11px] uppercase tracking-[0.16em] text-secondary font-semibold block mb-3">
-              {t.heritage.badge}
-            </span>
-            <h2 className="font-display-md text-display-md max-md:text-headline-lg-mobile text-primary mt-1 mb-stack-sm">
-              {t.heritage.heading}
-            </h2>
-            <div className="w-12 h-px bg-gold/40"></div>
-          </div>
+        {/* Heading */}
+        <h2 className="font-display-lg text-3xl sm:text-5xl md:text-6xl font-normal leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_4px_28px_rgba(0,0,0,0.85)]">
+          {t.heritage.heading}
+        </h2>
 
-          <p className="font-body-lg text-body-lg text-on-surface leading-relaxed">
-            {t.heritage.intro}
-          </p>
+        <div className="mx-auto my-6 h-px w-20 bg-gold/75" />
 
-          <p className="font-body-md text-body-md text-secondary leading-relaxed">
-            {isTH
-              ? "ความสัมพันธ์อันแน่นแฟ้นกับ ActivaSwiss AG Family Office เป็นเสาหลักที่ผสานความต่อเนื่องและการบริหารจัดการสินทรัพย์อย่างมีเสถียรภาพ เพื่อเปิดรับโอกาสใหม่ ๆ สำหรับคนรุ่นต่อไป"
-              : isDE
-              ? "Unsere Verbindung mit dem ActivaSwiss AG Family Office bildet das Fundament für Governance, Stabilität und generationenübergreifende Verantwortung beim Erschliessen neuer globaler Horizonte."
-              : "Our foundational connection with ActivaSwiss AG provides governance, stability, and enduring stewardship as we expand opportunities across global markets."}
-          </p>
+        {/* Intro Narrative */}
+        <p className="font-body-lg text-base sm:text-xl text-white/95 leading-relaxed max-w-3xl mx-auto drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] font-light">
+          {t.heritage.intro}
+        </p>
 
-          {/* CTA Link to Heritage Page */}
-          <div className="pt-2">
-            <Link
-              href="/heritage"
-              className="inline-flex items-center space-x-2 text-gold hover:text-gold-light font-label-md text-sm font-semibold group"
-            >
-              <span>{isTH ? "ค้นพบเรื่องราวของเรา (Discover Our Heritage →)" : isDE ? "Unsere Herkunft entdecken →" : "Discover Our Heritage →"}</span>
-              <ArrowRight className="w-4 h-4 ml-0.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
+        {/* Subholding Context */}
+        <p className="mt-4 font-body-md text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]">
+          {isTH
+            ? "ความสัมพันธ์อันแน่นแฟ้นกับ ActivaSwiss AG Family Office เป็นเสาหลักที่ผสานความต่อเนื่องและการบริหารจัดการสินทรัพย์อย่างมีเสถียรภาพ เพื่อเปิดรับโอกาสใหม่ ๆ สำหรับคนรุ่นต่อไป"
+            : isDE
+            ? "Unsere Verbindung mit dem ActivaSwiss AG Family Office bildet das Fundament für Governance, Stabilität und generationenübergreifende Verantwortung beim Erschliessen neuer globaler Horizonte."
+            : "Our foundational connection with ActivaSwiss AG Family Office provides governance, stability, and enduring stewardship as we expand opportunities across global markets."}
+        </p>
       </div>
     </section>
   );
